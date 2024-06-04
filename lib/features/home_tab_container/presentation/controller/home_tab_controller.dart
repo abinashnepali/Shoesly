@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:shoesly/features/home_tab_container/data/model/homeModel.dart';
+
+class HomeTabContainerController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  Rx<HomeTabContainerModel> hometabctrobj = HomeTabContainerModel().obs;
+
+  late TabController tabviewContainer =
+      Get.put(TabController(vsync: this, length: 5));
+}
