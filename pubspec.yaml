@@ -28,6 +28,9 @@ dependencies:
   get: ^4.6.5
   shared_preferences: ^2.2.0
   intl: ^0.18.0
+  flutter_svg: ^1.1.6
+  cached_network_image: ^3.2.3
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -42,9 +45,15 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
+
   assets:
     - assets/
     - assets/images/
+    - assets/images/product/
+    - assets/images/user/
+    - assets/images/brand/
+
 
   
   fonts:

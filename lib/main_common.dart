@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/app_theme.dart';
+import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/utils/constants.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 
 import 'crore/presentation/routes/app_pages.dart';
-import 'crore/utils/constants.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
@@ -13,13 +13,12 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: ((context, orientation, deviceType) {
       return GetMaterialApp(
-        title: kAppName,
+        title: Constants.kAppName,
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
         locale: Get.deviceLocale,
         themeMode: ThemeMode.light,
-        theme: AppThemes.lightThemeData,
-        darkTheme: AppThemes.darkThemeData,
+        theme: theme,
         initialRoute: AppPages.initial,
         getPages: AppPages.routes,
       );

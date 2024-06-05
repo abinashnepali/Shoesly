@@ -152,8 +152,8 @@ class LightCodeColors {
   Color get amberA200 => const Color(0XFF0F0F0F);
   // balck
   Color get black900 => const Color(0XFF0F0F0F);
-  Color get black9001 => const Color(0XFF070C18);
-  Color get black9002 => const Color(0XFF000000);
+  Color get black90001 => const Color(0XFF070C18);
+  Color get black90002 => const Color(0XFF000000);
   Color get black90019 => const Color(0X19000000);
 
   Color get blueGray10033 => const Color(0X33D7D7D7);
