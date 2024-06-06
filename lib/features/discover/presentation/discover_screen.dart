@@ -48,7 +48,7 @@ class DiscoverScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Icon(
-                                  Icons.align_horizontal_center_sharp,
+                                  Icons.tune_outlined,
                                   color: appTheme.white,
                                 ),
                                 Text(

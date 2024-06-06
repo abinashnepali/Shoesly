@@ -1,6 +1,6 @@
 # shoesly
 
-A new Flutter project.
+Shoesly is an flutter Ecommerce Application of Shoe. It developed using getx as State Management
 
 ## Getting Started
 
