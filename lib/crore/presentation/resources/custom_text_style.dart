@@ -33,6 +33,13 @@ class CustomTextStyles {
   static get labelLargeGray500 => theme.textTheme.labelLarge!.copyWith(
         color: appTheme.gray500,
       );
+
+  static get labelMediumWhite => theme.textTheme.labelMedium!.copyWith(
+        color: appTheme.gray400,
+      );
+
+  static get labelsmallWhite => theme.textTheme.labelSmall!.copyWith(
+      color: appTheme.white, fontSize: 10, fontWeight: FontWeight.normal);
   //title text Style
   //
   static get titleLargeBlack900 => theme.textTheme.titleLarge!.copyWith(

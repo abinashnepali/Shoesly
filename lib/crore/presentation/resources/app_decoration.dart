@@ -4,7 +4,7 @@ import 'package:shoesly/crore/utils/size_utils.dart';
 
 class AppDecoration {
   static BoxDecoration get fillBlack => BoxDecoration(color: appTheme.black900);
-  static BoxDecoration get fillgrey => BoxDecoration(color: appTheme.gray400);
+  static BoxDecoration get fillgrey => BoxDecoration(color: appTheme.gray200);
 
   static BoxDecoration get fillRedA => BoxDecoration(color: appTheme.redA200);
   static BoxDecoration get fillSecondaryContainer =>

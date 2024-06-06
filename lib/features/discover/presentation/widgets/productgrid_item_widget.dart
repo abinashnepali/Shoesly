@@ -23,8 +23,8 @@ class ProductGridItemWidget extends StatelessWidget {
             children: [
               CustomImageView(
                 imagePath: productinfo.brandImage!,
-                height: 14.adaptSize,
-                width: 14.adaptSize,
+                height: 24.adaptSize,
+                width: 24.adaptSize,
                 alignment: Alignment.topLeft,
                 color: Colors.grey,
               ),
@@ -65,7 +65,7 @@ class ProductGridItemWidget extends StatelessWidget {
                   //   width: 12.adaptSize,
                   //   margin: EdgeInsets.only(bottom: 1.v),
                   // ),
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Color(0xFFFCD240),
                     size: 12,
@@ -89,9 +89,12 @@ class ProductGridItemWidget extends StatelessWidget {
         SizedBox(
           height: 3.v,
         ),
-        Text(
-          productinfo.price!,
-          style: theme.textTheme.titleSmall,
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            productinfo.price!,
+            style: theme.textTheme.titleSmall,
+          ),
         )
       ],
     );

@@ -22,7 +22,8 @@ class ThemeHelper {
   }
 
   ThemeData _getThemeData() {
-    var colorSchema = _supportColorScheme[_appTheme] ?? ColorScheme.light();
+    var colorSchema =
+        _supportColorScheme[_appTheme] ?? ColorSchemes.lighCodeColorSchema;
 
     return ThemeData(
         visualDensity: VisualDensity.standard,
@@ -40,6 +41,12 @@ class ThemeHelper {
                 horizontal: -4,
               ),
               padding: EdgeInsets.zero),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: appTheme.black900,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
@@ -161,6 +168,8 @@ class LightCodeColors {
 
 //gray
   Color get gray100 => const Color(0XFFF3F3F3);
+  Color get gray200 => const Color(0XFFE7E7E7);
+
   Color get gray400 => const Color(0XFFB7B7B7);
   Color get gray500 => const Color(0XFFAAAAAA);
   Color get gray600 => const Color(0XFF6F6F6F);
@@ -168,4 +177,6 @@ class LightCodeColors {
 
   //Red
   Color get redA200 => const Color(0XFFFF4C5E);
+
+  Color get white => const Color(0XFFE7E7E7);
 }
