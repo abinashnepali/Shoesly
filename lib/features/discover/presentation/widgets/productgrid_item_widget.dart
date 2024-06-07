@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
+import 'package:shoesly/features/product_details/presentation/product_details_screen.dart';
 
 class ProductGridItemWidget extends StatelessWidget {
   ProductGridItemWidget(this.productinfo, {super.key});
@@ -14,32 +16,39 @@ class ProductGridItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.all(15.h),
-          decoration: AppDecoration.fillgrey.copyWith(
-            borderRadius: BorderRadiusStyle.roundedBorder20,
-          ),
-          child: Column(
-            children: [
-              CustomImageView(
-                imagePath: productinfo.brandImage!,
-                height: 24.adaptSize,
-                width: 24.adaptSize,
-                alignment: Alignment.topLeft,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                height: 4.v,
-              ),
-              CustomImageView(
-                imagePath: productinfo.productImage!,
-                height: 85.v,
-                width: 120.h,
-              ),
-              SizedBox(
-                height: 7.v,
-              )
-            ],
+        GestureDetector(
+          onTap: () {
+            if (productinfo != null) {
+              Get.toNamed(Routes.productDetails, arguments: productinfo);
+            } else {}
+          },
+          child: Container(
+            padding: EdgeInsets.all(15.h),
+            decoration: AppDecoration.fillgrey.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder20,
+            ),
+            child: Column(
+              children: [
+                CustomImageView(
+                  imagePath: productinfo.brandImage!,
+                  height: 24.adaptSize,
+                  width: 24.adaptSize,
+                  alignment: Alignment.topLeft,
+                  color: Colors.grey,
+                ),
+                SizedBox(
+                  height: 4.v,
+                ),
+                CustomImageView(
+                  imagePath: productinfo.productImage!,
+                  height: 85.v,
+                  width: 120.h,
+                ),
+                SizedBox(
+                  height: 7.v,
+                )
+              ],
+            ),
           ),
         ),
         SizedBox(
