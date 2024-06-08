@@ -17,6 +17,7 @@ import 'package:shoesly/crore/utils/size_utils.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
 import 'package:shoesly/features/product_details/data/models/sizeselection_item_model.dart';
+import 'package:shoesly/features/product_details/presentation/widgets/silder_widget.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/sizeselection_item_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ///   _buildProductImages(),
+                      _buildProductImages(),
                       SizedBox(
                         height: 35.v,
                       ),
@@ -149,11 +150,46 @@ class ProductDetailsScreen extends StatelessWidget {
 
   PreferredSizeWidget _buildAppbar() {
     return CustomeAppBar(
-      leadingWidth: 54.h,
+      leadingWidth: 55.h,
       leading: CustomIconButton(
         icon: Icons.arrow_back_rounded,
         onPressed: () => Get.back(),
       ),
+      action: [
+        Container(
+          height: 24.adaptSize,
+          width: 28.adaptSize,
+          margin: EdgeInsets.fromLTRB(30.h, 16.h, 30.h, 15.h),
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  color: theme.colorScheme.onPrimaryContainer,
+                  icon: const Icon(
+                    Icons.shopping_bag_outlined,
+                    //FontAwesomeIcons.cartShopping,
+                    size: 24,
+                  )),
+              Visibility(
+                visible: false,
+                child: Positioned(
+                  top: 12,
+                  right: 2,
+                  child: Container(
+                    height: 7.adaptSize,
+                    width: 7.adaptSize,
+                    margin: EdgeInsets.only(left: 16.h, top: 4.v, bottom: 12.v),
+                    decoration: BoxDecoration(
+                        color: appTheme.redA200,
+                        borderRadius: BorderRadius.circular(4.h)),
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 
@@ -208,24 +244,22 @@ class ProductDetailsScreen extends StatelessWidget {
       child: Stack(
         alignment: Alignment.bottomLeft,
         children: [
-          // CarouselSlider.builder(
-          //   itemCount: 4,
-          //   options: CarouselOptions(
-          //     height: 315.adaptSize,
-          //     initialPage: 0,
-          //     autoPlay: true,
-          //     viewportFraction: 1.0,
-          //     enableInfiniteScroll: false,
-          //     scrollDirection: Axis.horizontal,
-          //     onPageChanged: ((index, reason) {
-          //       //contoller.sliderIndex.value = index
-          //     }),
-          //   ),
-          //   itemBuilder: (context, index, realIndex) {
-          //   //  Slider
-
-          //   }
-          //   ),
+          CarouselSlider.builder(
+              itemCount: 4,
+              options: CarouselOptions(
+                height: 315.adaptSize,
+                initialPage: 0,
+                autoPlay: true,
+                viewportFraction: 1.0,
+                enableInfiniteScroll: false,
+                scrollDirection: Axis.horizontal,
+                onPageChanged: ((index, reason) {
+                  //contoller.sliderIndex.value = index
+                }),
+              ),
+              itemBuilder: (context, index, realIndex) {
+                return SliderWidget();
+              }),
         ],
       ),
     );

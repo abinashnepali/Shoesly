@@ -7,6 +7,8 @@ class SizeselectionItemWidget extends StatelessWidget {
   SizeselectionItemWidget({super.key, this.sizeinfo});
 
   SizeSelectionItemModel? sizeinfo;
+  // final isToggled = useState(false);
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -28,21 +30,12 @@ class SizeselectionItemWidget extends StatelessWidget {
           selected: (sizeinfo?.isSizeSelected ?? false),
           backgroundColor: Colors.transparent,
           selectedColor: appTheme.black900,
-          shape: // (sizeinfo?.isSizeSelected ?? false)
-              //  ?
-              CircleBorder(
+          shape: const CircleBorder(
             side: BorderSide.none,
-          )
-          //     RoundedRectangleBorder(
-          //   side: BorderSide.none,
-          //   borderRadius: BorderRadius.circular(20.h),
-          // )
-          // : RoundedRectangleBorder(
-          //     side:
-          //         BorderSide(color: theme.colorScheme.primary, width: 1.h)),
-          ,
+          ),
           onSelected: (value) {
             sizeinfo!.isSizeSelected = value;
+            //isToggled.value = !isToggled.value;
           },
         ));
   }
