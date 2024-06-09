@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 
-enum Style { bigFill }
+enum Style { bigFill, mediumFill, smallFill }
 
 class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomeAppBar(
@@ -13,7 +14,8 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leading,
       this.title,
       this.centerTitle,
-      this.action});
+      this.action,
+      this.titleTextStyle});
 
   final double? height;
   final Style? styleType;
@@ -22,6 +24,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final bool? centerTitle;
   final List<Widget>? action;
+  final TextStyle? titleTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 0,
       centerTitle: centerTitle ?? false,
       actions: action,
+      titleTextStyle: titleTextStyle ?? CustomTextStyles.bodyMediumBlack900,
     );
   }
 
@@ -52,6 +56,25 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: theme.colorScheme.secondaryContainer,
           ),
         );
+
+      case Style.mediumFill:
+        return Container(
+          height: 40.v,
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.secondaryContainer,
+          ),
+        );
+
+      case Style.smallFill:
+        return Container(
+          height: 30.v,
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.secondaryContainer,
+          ),
+        );
+
       default:
         return null;
     }
