@@ -45,7 +45,7 @@ List<ProductgirdItemModel> productgridList = [
       price: '\$235,00',
       id: '1'),
   ProductgirdItemModel(
-      brandImage: '${Constants.imgBrand}/brand3.png',
+      brandImage: '${Constants.imgBrand}/brand.png',
       productImage: '${Constants.productImage}/Product4.png',
       productName: 'Jordand 1 Retro High Tie Dye',
       rating: '4.5',

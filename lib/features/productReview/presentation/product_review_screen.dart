@@ -113,7 +113,7 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
         unselectedLabelColor: appTheme.gray400,
         labelStyle: theme.textTheme.titleLarge,
         indicatorColor: Colors.transparent,
-        tabs: [
+        tabs: const [
           Tab(
             child: Text(
               'All',

@@ -1,22 +1,23 @@
-import 'dart:js';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
 import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_elevated_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_rating_bar.dart';
+import 'package:shoesly/crore/utils/common_widgets.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
 import 'package:shoesly/features/product_details/data/models/sizeselection_item_model.dart';
+import 'package:shoesly/features/product_details/presentation/widgets/product_addto_cart_buttonsheet.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/silder_widget.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/sizeselection_item_widget.dart';
 
@@ -27,6 +28,15 @@ class ProductDetailsScreen extends StatelessWidget {
 
   final String productDesc =
       'Engineered to crush any movement-base woekout, these On sneakers enhance the label\'s original Cloud sneakers with cutting edge techloges for a pair';
+
+  void _showAddToCartBottomSheet(BuildContext context) {
+    if (Get.isBottomSheetOpen == null || !Get.isBottomSheetOpen!) {
+      Get.bottomSheet(
+        ProductBottomSheet(),
+        isScrollControlled: true,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +52,15 @@ class ProductDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: _buildAppbar(),
-        body: SizedBox(
-          width: double.maxFinite,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10.v,
-              ),
-              Expanded(
-                  child: SingleChildScrollView(
-                child: Container(
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10.v,
+                ),
+                Container(
                   margin: EdgeInsets.only(bottom: 5.v),
                   padding: EdgeInsets.symmetric(horizontal: 30.h),
                   child: Column(
@@ -138,12 +147,18 @@ class ProductDetailsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ))
-            ],
+                )
+              ],
+            ),
           ),
         ),
-        bottomNavigationBar: _buildPriceAndCart(),
+        bottomNavigationBar: CommonWidget.bottomPriceAndCart(
+            buttonLabel: 'Add to Cart',
+            labelText: 'Price',
+            onPressed: () {
+              _showAddToCartBottomSheet(context);
+            },
+            price: '\$235.00'),
       ),
     );
   }
@@ -351,6 +366,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
         CustomOutlineButton(
           text: 'See All Review'.toUpperCase(),
+          onPressed: () => Get.toNamed(Routes.productReview),
         )
       ],
     );
@@ -377,39 +393,39 @@ class ProductDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPriceAndCart() {
-    return Container(
-      height: 90.h,
-      margin: EdgeInsets.only(left: 30.h, right: 30.h, bottom: 19.v),
-      decoration: AppDecoration.OutlinedBlueGray,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Price',
-                style: CustomTextStyles.bodySmallGray400,
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 11.v),
-                child: Text(
-                  '\$235.00',
-                  style: CustomTextStyles.titleLargeBlack900,
-                ),
-              )
-            ],
-          ),
-          CustomElevatedButton(
-            width: 156.h,
-            text: 'Add to Cart'.toUpperCase(),
-            buttonTextStyle: CustomTextStyles.labelsmallWhite
-                .copyWith(fontWeight: FontWeight.w400),
-          )
-        ],
-      ),
-    );
-  }
+  // Widget _buildPriceAndCart() {
+  //   return Container(
+  //     height: 90.h,
+  //     margin: EdgeInsets.only(left: 30.h, right: 30.h, bottom: 19.v),
+  //     decoration: AppDecoration.OutlinedBlueGray,
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       children: [
+  //         Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Text(
+  //               'Price',
+  //               style: CustomTextStyles.bodySmallGray400,
+  //             ),
+  //             Padding(
+  //               padding: EdgeInsets.only(top: 11.v),
+  //               child: Text(
+  //                 '\$235.00',
+  //                 style: CustomTextStyles.titleLargeBlack900,
+  //               ),
+  //             )
+  //           ],
+  //         ),
+  //         CustomElevatedButton(
+  //           width: 156.h,
+  //           text: 'Add to Cart'.toUpperCase(),
+  //           buttonTextStyle: CustomTextStyles.labelsmallWhite
+  //               .copyWith(fontWeight: FontWeight.w400),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }

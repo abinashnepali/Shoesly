@@ -30,7 +30,7 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
               height: 967.v,
               child: TabBarView(
                   controller: controller.tabviewContainer,
-                  children: [
+                  children: const [
                     DiscoverScreen(),
                     DiscoverScreen(),
                     DiscoverScreen(),
@@ -55,6 +55,8 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
         isScrollable: true,
         labelColor: appTheme.black900,
         unselectedLabelColor: appTheme.gray400,
+        labelStyle: theme.textTheme.titleLarge,
+        indicatorColor: Colors.transparent,
         tabs: const [
           Tab(
             child: Text('All'),

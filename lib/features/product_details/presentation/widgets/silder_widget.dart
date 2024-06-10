@@ -31,10 +31,10 @@ class SliderWidget extends StatelessWidget {
               height: 59.v,
             ),
             CustomImageView(
-              imagePath: '${Constants.productImage}/product.png',
-              height: 178.v,
+              imagePath: '${Constants.productImage}/Product.png',
+              height: 174.v,
               width: 252.h,
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
             ),
             SizedBox(
               height: 17.v,
@@ -56,7 +56,7 @@ class SliderWidget extends StatelessWidget {
                   children: List.generate(shoeColor.length, (index) {
                     return ClipOval(
                       child: SizedBox(
-                        height: 20.v,
+                        height: 18.v,
                         width: 20.h,
                         child: DecoratedBox(
                             decoration: BoxDecoration(

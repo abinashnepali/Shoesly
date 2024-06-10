@@ -38,8 +38,7 @@ class CustomTextStyles {
       );
 
   static get labelMediumWhite => theme.textTheme.labelMedium!.copyWith(
-        color: appTheme.gray400,
-      );
+      color: appTheme.white, fontSize: 16, fontWeight: FontWeight.w600);
 
   static get labelsmallWhite => theme.textTheme.labelSmall!.copyWith(
       color: appTheme.white, fontSize: 10, fontWeight: FontWeight.normal);
