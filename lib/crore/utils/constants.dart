@@ -10,4 +10,7 @@ class Constants {
   static const imgUser = "$imagePath/user";
   static const imgBrand = "$imagePath/brand";
   static const noImage = "$imagePath/noimage.jpg";
+
+  //text
+  static const deleteConfirm = "Are You Sure You Want to Delete?";
 }

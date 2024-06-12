@@ -10,11 +10,13 @@ import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 
 class ProductCartBottomSheet extends StatelessWidget {
-  const ProductCartBottomSheet({super.key});
+  const ProductCartBottomSheet({super.key, required this.itemNO});
+
+  final String? itemNO;
 
   @override
   Widget build(BuildContext context) {
-    String quanity = '1';
+    String quanity = itemNO!;
     return Container(
       width: double.maxFinite,
       padding: EdgeInsets.all(30.h),

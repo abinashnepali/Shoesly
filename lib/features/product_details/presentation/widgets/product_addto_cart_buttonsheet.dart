@@ -11,13 +11,17 @@ import 'package:shoesly/features/product_details/presentation/controller/product
 import 'package:shoesly/features/product_details/presentation/widgets/product_cart_buttonsheet.dart';
 
 class ProductBottomSheet extends StatelessWidget {
-  const ProductBottomSheet({super.key});
+  ProductBottomSheet({super.key});
+
+  final ProductAddtoCartButtonSheetController _buttonSheetCrl =
+      Get.find<ProductAddtoCartButtonSheetController>();
 
   void _showCartBottomSheet() {
     Get.back();
     if (Get.isBottomSheetOpen == null || !Get.isBottomSheetOpen!) {
       Get.bottomSheet(
-        ProductCartBottomSheet(),
+        ProductCartBottomSheet(
+            itemNO: (_buttonSheetCrl.quantitycontroller.text)),
         isScrollControlled: true,
       );
     }
@@ -25,8 +29,7 @@ class ProductBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductAddtoCartButtonSheetController _buttonSheetCrl =
-        Get.find<ProductAddtoCartButtonSheetController>();
+    _buttonSheetCrl.quantitycontroller.text = '1';
 
     return Container(
       width: double.infinity,
@@ -87,7 +90,7 @@ class ProductBottomSheet extends StatelessWidget {
                         child: CustomIconButton(
                           alignment: Alignment.topCenter,
                           icon: Icons.remove_circle_outline,
-                          color: Color.fromARGB(255, 14, 13, 13),
+                          color: const Color.fromARGB(255, 14, 13, 13),
                           iconSize: 28,
                           onPressed: () {
                             _buttonSheetCrl.addRemoveQuanity(remove: true);
@@ -97,7 +100,7 @@ class ProductBottomSheet extends StatelessWidget {
                 ),
                 // Addd
 
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
 
@@ -109,7 +112,7 @@ class ProductBottomSheet extends StatelessWidget {
                         child: CustomIconButton(
                           alignment: Alignment.topCenter,
                           icon: Icons.add_circle_outline,
-                          color: Color(0xFF101010),
+                          color: const Color(0xFF101010),
                           iconSize: 28,
                           onPressed: () {
                             _buttonSheetCrl.addRemoveQuanity(add: true);
@@ -132,7 +135,7 @@ class ProductBottomSheet extends StatelessWidget {
           ),
           Obx(
             () => CommonWidget.bottomPriceAndCart(
-                margin: EdgeInsets.all(0),
+                margin: const EdgeInsets.all(0),
                 buttonLabel: 'Add to Cart',
                 labelText: 'Total Price',
                 price: '\$${_buttonSheetCrl.golbalTotalPrice.value}',

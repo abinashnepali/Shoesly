@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class ProductAddtoCartButtonSheetController extends GetxController {
   TextEditingController quantitycontroller = TextEditingController();
 
-  var golbalTotalPrice = 00.00.obs;
+  var golbalTotalPrice = 235.00.obs;
 
   @override
   void onClose() {
