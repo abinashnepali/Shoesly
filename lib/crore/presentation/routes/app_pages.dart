@@ -4,6 +4,7 @@ import 'package:shoesly/features/cart/di/bindings/cart_binding.dart';
 import 'package:shoesly/features/cart/presentation/cart_screen.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
+import 'package:shoesly/features/filter/presentation/filter_screen.dart';
 import 'package:shoesly/features/home_tab_container/data/di/home_tab_container_binding.dart';
 import 'package:shoesly/features/home_tab_container/home_tab_container_screen.dart';
 import 'package:shoesly/features/orderSummary/presentation/order_summary_screen.dart';
@@ -48,5 +49,9 @@ class AppPages {
         name: Routes.cartScreen,
         page: CartScreen.new,
         bindings: [CartControllerBindings()]),
+    GetPage(
+      name: Routes.productFilter,
+      page: FilterScreen.new,
+    ),
   ];
 }

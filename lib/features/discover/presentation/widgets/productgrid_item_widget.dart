@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
-import 'package:shoesly/features/product_details/presentation/widgets/product_addto_cart_buttonsheet.dart';
-import 'package:shoesly/features/product_details/presentation/widgets/product_cart_buttonsheet.dart';
 
 class ProductGridItemWidget extends StatelessWidget {
   ProductGridItemWidget(this.productinfo, {super.key});

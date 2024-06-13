@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/appbar_title.dart';

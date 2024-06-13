@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/utils/constants.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 import 'package:shoesly/features/discover/presentation/controller/discover_controller.dart';
@@ -15,7 +16,6 @@ class DiscoverScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('The value is :$noImage');
     return SafeArea(
         child: Scaffold(
       body: SizedBox(
@@ -38,7 +38,7 @@ class DiscoverScreen extends StatelessWidget {
                         width: 90.v,
                         child: FloatingActionButton(
                           elevation: 0,
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed(Routes.productFilter),
                           child: Padding(
                             padding: const EdgeInsets.all(4),
                             child: Row(

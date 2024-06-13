@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
+
 import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/appbar/appbar_title.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_dialog.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
