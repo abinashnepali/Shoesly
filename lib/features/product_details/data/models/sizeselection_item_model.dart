@@ -1,13 +1,28 @@
+import 'package:get/get.dart';
+
 class SizeSelectionItemModel {
   SizeSelectionItemModel({required this.size, required this.isSizeSelected});
   double size;
-  bool isSizeSelected;
+  RxBool? isSizeSelected;
+
+  SizeSelectionItemModel.init({required this.size})
+      : isSizeSelected = false.obs;
 }
 
-List<SizeSelectionItemModel> sizeListInfo = [
-  SizeSelectionItemModel(size: 39, isSizeSelected: true),
-  SizeSelectionItemModel(size: 39.5, isSizeSelected: false),
-  SizeSelectionItemModel(size: 40, isSizeSelected: false),
-  SizeSelectionItemModel(size: 40.5, isSizeSelected: false),
-  SizeSelectionItemModel(size: 41, isSizeSelected: false)
-];
+RxList<SizeSelectionItemModel> sizeListInfo = <SizeSelectionItemModel>[
+  SizeSelectionItemModel.init(
+    size: 39,
+  ),
+  SizeSelectionItemModel.init(
+    size: 39.5,
+  ),
+  SizeSelectionItemModel.init(
+    size: 40,
+  ),
+  SizeSelectionItemModel.init(
+    size: 40.5,
+  ),
+  SizeSelectionItemModel.init(
+    size: 41,
+  )
+].obs;

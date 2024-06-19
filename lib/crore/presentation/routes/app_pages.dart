@@ -17,7 +17,7 @@ class AppPages {
   AppPages._();
 
   static const initial = Routes.homeTabContainer;
-  //static const initial = Routes.productReview;
+  //static const initial = Routes.orderSummary;
 
   static final routes = [
     GetPage(

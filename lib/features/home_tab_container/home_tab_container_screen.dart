@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/appbar_title.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
@@ -92,7 +93,9 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
             alignment: Alignment.centerRight,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.cartScreen);
+                  },
                   color: theme.colorScheme.onPrimaryContainer,
                   icon: const Icon(
                     Icons.shopping_bag_outlined,

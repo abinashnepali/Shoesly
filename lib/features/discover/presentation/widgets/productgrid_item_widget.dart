@@ -24,8 +24,8 @@ class ProductGridItemWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (productinfo != null) {
-                // Get.toNamed(Routes.productDetails, arguments: productinfo);
-                Get.toNamed(Routes.cartScreen);
+                Get.toNamed(Routes.productDetails, arguments: productinfo);
+                //Get.toNamed(Routes.cartScreen);
               } else {}
             },
             child: Container(

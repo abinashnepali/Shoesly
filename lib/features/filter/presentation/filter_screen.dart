@@ -9,7 +9,9 @@ import 'package:shoesly/features/filter/data/models/brand_model.dart';
 import 'package:shoesly/features/filter/data/models/range_model.dart';
 import 'package:shoesly/features/filter/presentation/controller/filter_controller.dart';
 import 'package:shoesly/features/filter/presentation/widgets/brand_list_item_widget.dart';
-import 'package:shoesly/features/filter/presentation/widgets/sort_Item_widget.dart';
+import 'package:shoesly/features/filter/presentation/widgets/color_list_item_widget.dart';
+import 'package:shoesly/features/filter/presentation/widgets/gender_list_item_widget.dart';
+import 'package:shoesly/features/filter/presentation/widgets/sort_item_widget.dart';
 
 class FilterScreen extends StatelessWidget {
   FilterScreen({super.key});
@@ -44,7 +46,18 @@ class FilterScreen extends StatelessWidget {
                       SizedBox(
                         height: 39.v,
                       ),
-                      _buildSortBySectionWidget()
+                      _buildSortBySectionWidget(),
+                      SizedBox(
+                        height: 39.v,
+                      ),
+                      _buildGenderSectionWidget(),
+                      SizedBox(
+                        height: 39.v,
+                      ),
+                      _buildColorSectionWidget(),
+                      SizedBox(
+                        height: 39.v,
+                      ),
                     ],
                   )
                 ],
@@ -99,8 +112,8 @@ class FilterScreen extends StatelessWidget {
                     separatorBuilder: (context, index) => SizedBox(
                       width: 20.h,
                     ),
-                    itemBuilder: (context, index) =>
-                        BrandListItemWidget(brandItem: branditemList[index]),
+                    itemBuilder: (context, index) => BrandListItemWidget(
+                        brandItem: branditemList[index], index: index),
                   ),
                 ))
               ],
@@ -213,6 +226,74 @@ class FilterScreen extends StatelessWidget {
               itemCount: sortItemsList.length,
               itemBuilder: (context, index) => SortItemWidget(
                 sortItem: sortItemsList[index],
+                index: index,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  // Gender
+
+  Widget _buildGenderSectionWidget() {
+    return Padding(
+      padding: EdgeInsets.only(left: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Gender',
+            style: theme.textTheme.titleMedium,
+          ),
+          SizedBox(
+            height: 28.v,
+          ),
+          SizedBox(
+            height: 50.v,
+            width: double.maxFinite,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => SizedBox(
+                width: 10.v,
+              ),
+              itemCount: genderinfoList.length,
+              itemBuilder: (context, index) => GenderItemList(
+                sortItem: genderinfoList[index],
+                index: index,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildColorSectionWidget() {
+    return Padding(
+      padding: EdgeInsets.only(left: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Color',
+            style: theme.textTheme.titleMedium,
+          ),
+          SizedBox(
+            height: 28.v,
+          ),
+          SizedBox(
+            height: 50.v,
+            width: double.maxFinite,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => SizedBox(
+                width: 10.v,
+              ),
+              itemCount: colorFilterinfo.length,
+              itemBuilder: (context, index) => ColorSectionWidget(
+                sortItem: colorFilterinfo[index],
                 index: index,
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_dialog.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
@@ -57,7 +58,9 @@ class CartScreen extends StatelessWidget {
         buttonLabel: 'Check Out',
         labelText: 'Grand Total',
         price: '\$7005.00',
-        onPressed: () {});
+        onPressed: () {
+          Get.toNamed(Routes.orderSummary);
+        });
   }
 
   Widget _buildProductList() {

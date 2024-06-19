@@ -286,8 +286,7 @@ class ProductDetailsScreen extends StatelessWidget {
         spacing: 15.h,
         children: List.generate(sizeListInfo.length, (index) {
           return SizeselectionItemWidget(
-            sizeinfo: sizeListInfo[index],
-          );
+              sizeinfo: sizeListInfo[index], index: index);
         }));
   }
 

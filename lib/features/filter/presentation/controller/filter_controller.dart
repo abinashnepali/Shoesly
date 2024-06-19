@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shoesly/features/filter/data/models/brand_model.dart';
 import 'package:shoesly/features/filter/data/models/range_model.dart';
 
 class FilterController extends GetxController {
@@ -6,6 +7,10 @@ class FilterController extends GetxController {
 
   // List to store the selected state of each SortItemWidget
   RxList<bool> sortFilterIsselectedList = <bool>[false, false, false].obs;
+
+  RxList<bool> genderFilterIsselectedList = <bool>[false, false, false].obs;
+
+  RxList<bool> colorFilterIsselectedList = <bool>[false, false, false].obs;
 
   void updateSliderValues(CustomRangeValues values) {
     sliderValues.value = values;
@@ -19,6 +24,32 @@ class FilterController extends GetxController {
       if (i != index) {
         sortFilterIsselectedList[i] = false;
       }
+    }
+  }
+
+  void updateGenderSelection({required index, bool? value}) {
+    genderFilterIsselectedList[index] = true;
+    // Reset all other selections to false
+    for (int i = 0; i < genderFilterIsselectedList.length; i++) {
+      if (i != index) {
+        genderFilterIsselectedList[i] = false;
+      }
+    }
+  }
+
+  void updateColorSelection({required index, bool? value}) {
+    colorFilterIsselectedList[index] = true;
+    // Reset all other selections to false
+    for (int i = 0; i < colorFilterIsselectedList.length; i++) {
+      if (i != index) {
+        colorFilterIsselectedList[i] = false;
+      }
+    }
+  }
+
+  void updateBrandSelection({required int index}) {
+    for (int i = 0; i < branditemList.length; i++) {
+      branditemList[i].isSelected?.value = i == index;
     }
   }
 }
