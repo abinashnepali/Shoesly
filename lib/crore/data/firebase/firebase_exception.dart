@@ -1,5 +1,5 @@
-class FirebaseException implements Exception {
-  FirebaseException({required this.message, required this.code});
+class FirebaseServiceException implements Exception {
+  FirebaseServiceException({required this.message, required this.code});
 
   final String message;
   final String code;

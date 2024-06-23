@@ -13,4 +13,11 @@ class Constants {
 
   //text
   static const deleteConfirm = "Are You Sure You Want to Delete?";
+
+//firebase collectin name
+  static const brandList = "brands";
+  static const productDetailsList = "productDetails";
+  static const reviewdList = "review";
+  static const sizeinfo = "size";
+  static const userinfo = "users";
 }

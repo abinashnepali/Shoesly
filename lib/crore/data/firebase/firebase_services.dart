@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FirebaseService {
-  static final FirebaseAuth auth = FirebaseAuth.instance;
-  static final FirebaseStorage storage = FirebaseStorage.instance;
-  static final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  static FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  static FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+  static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   FirebaseService._();
 }

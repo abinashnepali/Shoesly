@@ -5,7 +5,8 @@ import 'package:shoesly/features/product_details/presentation/controller/product
 class ProductDetailBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put(ProductAddtoCartButtonSheetController());
-    Get.put(ProductDetailController());
+    Get
+      ..put(ProductAddtoCartButtonSheetController())
+      ..put(ProductDetailController());
   }
 }

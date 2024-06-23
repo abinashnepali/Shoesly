@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:shoesly/crore/di/core_binding.dart';
 import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/features/cart/di/bindings/cart_binding.dart';
 import 'package:shoesly/features/cart/presentation/cart_screen.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
+import 'package:shoesly/features/discover/di/discover_binding.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
 import 'package:shoesly/features/filter/presentation/filter_screen.dart';
 import 'package:shoesly/features/home_tab_container/data/di/home_tab_container_binding.dart';
@@ -23,7 +25,12 @@ class AppPages {
     GetPage(
         name: Routes.homeTabContainer,
         page: HomeTabContainerScreen.new,
-        bindings: [HomeTabContainerBinding(), ProductDetailBindings()]),
+        bindings: [
+          CoreBindings(),
+          HomeTabContainerBinding(),
+          ProductDetailBindings(),
+          DiscoverBinding()
+        ]),
     GetPage(name: Routes.discover, page: DiscoverScreen.new),
     GetPage(name: Routes.orderSummary, page: OrderSummary.new),
     GetPage(
