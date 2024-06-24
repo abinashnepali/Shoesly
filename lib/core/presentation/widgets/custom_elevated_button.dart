@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/base_button.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/widgets/base_button.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
-class CustomOutlineButton extends BaseButton {
-  CustomOutlineButton(
+class CustomElevatedButton extends BaseButton {
+  CustomElevatedButton(
       {Key? key,
       this.decoration,
       this.leftIcon,
       this.rightIcon,
-      this.label,
       EdgeInsets? margin,
       VoidCallback? onPressed,
       ButtonStyle? buttonStyle,
@@ -33,24 +32,23 @@ class CustomOutlineButton extends BaseButton {
   final BoxDecoration? decoration;
   final Widget? leftIcon;
   final Widget? rightIcon;
-  final Widget? label;
 
   @override
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
             alignment: alignment!,
-            child: buildOutlineButtonWidget,
+            child: buildElevatedButtonWidget,
           )
-        : buildOutlineButtonWidget;
+        : buildElevatedButtonWidget;
   }
 
-  Widget get buildOutlineButtonWidget => Container(
+  Widget get buildElevatedButtonWidget => Container(
         height: this.height ?? 50.v,
         width: this.width ?? double.maxFinite,
         margin: marign,
         decoration: decoration,
-        child: OutlinedButton(
+        child: ElevatedButton(
           style: buttonStyle,
           onPressed: isDisabled ?? false ? null : onPressed ?? () {},
           child: Row(
@@ -60,7 +58,8 @@ class CustomOutlineButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text!,
-                style: buttontextStyle ?? theme.textTheme.titleSmall,
+                style: buttontextStyle ??
+                    CustomTextStyles.titleSmallSecondaryContainer,
               ),
               rightIcon ?? const SizedBox.shrink()
             ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_rating_bar.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/widgets/custom_image_view.dart';
+import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_rating_bar.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
 
 class ReviewWidget extends StatelessWidget {
@@ -29,6 +29,7 @@ class ReviewWidget extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final item = reviewListinfo[index];
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

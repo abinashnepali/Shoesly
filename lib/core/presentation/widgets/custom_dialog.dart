@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
+import 'package:shoesly/core/presentation/resources/app_decoration.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
 
 class CustomDialog extends StatelessWidget {
   const CustomDialog(

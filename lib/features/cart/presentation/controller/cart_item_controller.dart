@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoesly/crore/utils/constants.dart';
+import 'package:shoesly/core/utils/constants.dart';
 import 'package:shoesly/features/cart/data/models/product_details_cart_model.dart';
 
 class CartItemController extends GetxController {

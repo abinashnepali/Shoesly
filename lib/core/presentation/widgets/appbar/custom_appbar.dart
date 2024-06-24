@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
 enum Style { bigFill, mediumFill, smallFill }
 

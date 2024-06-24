@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/filter/data/models/range_model.dart';
 
 import 'package:shoesly/features/filter/presentation/controller/filter_controller.dart';

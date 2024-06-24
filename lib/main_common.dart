@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/utils/constants.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/utils/constants.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
-import 'crore/presentation/routes/app_pages.dart';
+import 'core/presentation/routes/app_pages.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);

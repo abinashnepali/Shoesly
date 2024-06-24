@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoesly/crore/data/firebase/network_info.dart';
+import 'package:shoesly/core/data/firebase/network_info.dart';
 import 'package:shoesly/features/productReview/data/repository/review_repository.dart';
 import 'package:shoesly/features/productReview/data/repository/review_repositoryimpl.dart';
 import 'package:shoesly/features/productReview/presentation/controller/review_controller.dart';

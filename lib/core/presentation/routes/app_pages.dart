@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:shoesly/crore/di/core_binding.dart';
-import 'package:shoesly/crore/presentation/routes/app_routes.dart';
+import 'package:shoesly/core/di/core_binding.dart';
+import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/features/cart/di/bindings/cart_binding.dart';
 import 'package:shoesly/features/cart/presentation/cart_screen.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
@@ -48,7 +48,7 @@ class AppPages {
             productDetailsModel: productDetailsModel,
           );
         },
-        bindings: [ProductDetailBindings()]),
+        bindings: [ProductDetailBindings(), ReviewControllerBinding()]),
     GetPage(
         name: Routes.productReview,
         page: ProductReviewScreen.new,

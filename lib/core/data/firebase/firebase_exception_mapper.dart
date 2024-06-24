@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:shoesly/crore/data/firebase/firebase_exception.dart'; // Ensure you import this for FirebaseException
+import 'package:shoesly/core/data/firebase/firebase_exception.dart'; // Ensure you import this for FirebaseException
 
 class FirebaseExceptionMapper {
   static FirebaseServiceException mapFirebaseException(FirebaseException e) {

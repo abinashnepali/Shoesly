@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 
 class AppbarTitle extends StatelessWidget {
   AppbarTitle({super.key, required this.text, this.margin, this.onTap});

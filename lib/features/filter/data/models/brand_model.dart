@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoesly/crore/utils/constants.dart';
+import 'package:shoesly/core/utils/constants.dart';
 
 class BrandModel {
   BrandModel(

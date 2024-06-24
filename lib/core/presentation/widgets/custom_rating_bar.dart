@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
 class CustomRatingBar extends StatelessWidget {
   CustomRatingBar(

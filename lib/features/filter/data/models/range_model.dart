@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 
 class CustomRangeValues {
   final double start;

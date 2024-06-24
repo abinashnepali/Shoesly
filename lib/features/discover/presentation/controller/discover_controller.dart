@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import 'package:shoesly/crore/presentation/widgets/loading_dialog.dart';
-import 'package:shoesly/crore/presentation/widgets/toast.dart';
+import 'package:shoesly/core/presentation/widgets/loading_dialog.dart';
+import 'package:shoesly/core/presentation/widgets/toast.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 import 'package:shoesly/features/discover/data/repository/discovery_repository.dart';
 
@@ -20,6 +20,7 @@ class DiscoverController extends GetxController {
 // fetch products from firebase
   fetchProductList({bool filter = false}) async {
     CustomLoadingDialog.showProgressDialog();
+    await Future.delayed(Duration(seconds: 3));
 
     final productresponse = await discoveryRepository.getAllProduct();
     CustomLoadingDialog.hideProgressDialog();

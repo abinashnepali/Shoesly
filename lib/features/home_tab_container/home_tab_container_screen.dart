@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/routes/app_routes.dart';
-import 'package:shoesly/crore/presentation/widgets/appbar/appbar_title.dart';
-import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/routes/app_routes.dart';
+import 'package:shoesly/core/presentation/widgets/appbar/appbar_title.dart';
+import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
 import 'package:shoesly/features/home_tab_container/presentation/controller/home_tab_controller.dart';
 
@@ -57,6 +57,7 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
         unselectedLabelColor: appTheme.gray400,
         labelStyle: theme.textTheme.titleLarge,
         indicatorColor: Colors.transparent,
+        dividerColor: appTheme.white,
         tabs: const [
           Tab(
             child: Text('All'),
@@ -86,7 +87,7 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
       title: AppbarTitle(text: 'Discover', margin: EdgeInsets.only(left: 31.h)),
       action: [
         Container(
-          height: 24.adaptSize,
+          height: 40.adaptSize,
           width: 28.adaptSize,
           margin: EdgeInsets.fromLTRB(30.h, 16.h, 30.h, 15.h),
           child: Stack(
@@ -105,7 +106,7 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
               Visibility(
                 visible: true,
                 child: Positioned(
-                  top: 12,
+                  top: 8,
                   right: 2,
                   child: Container(
                     height: 7.adaptSize,

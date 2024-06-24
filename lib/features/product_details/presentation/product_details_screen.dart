@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/routes/app_routes.dart';
-import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_rating_bar.dart';
-import 'package:shoesly/crore/utils/common_widgets.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/routes/app_routes.dart';
+import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
+import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_image_view.dart';
+import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_rating_bar.dart';
+import 'package:shoesly/core/utils/common_widgets.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
+import 'package:shoesly/features/productReview/presentation/controller/review_controller.dart';
 import 'package:shoesly/features/product_details/data/models/sizeselection_item_model.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/product_addto_cart_buttonsheet.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/silder_widget.dart';
@@ -135,7 +136,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
                       ///Review
 
-                      _buildReviewList(reviewListinfo),
+                      _buildReviewList(),
                       SizedBox(
                         height: 27.v,
                       ),
@@ -152,7 +153,7 @@ class ProductDetailsScreen extends StatelessWidget {
             onPressed: () {
               _showAddToCartBottomSheet(context);
             },
-            price: '\$235.00'),
+            price: '\$${productDetailsModel!.price}'),
       ),
     );
   }
@@ -286,85 +287,90 @@ class ProductDetailsScreen extends StatelessWidget {
         }));
   }
 
-  Widget _buildReviewList(List<ReviewModel> reviewListinfo) {
+  Widget _buildReviewList() {
     String reviewText = 'Review (1045)';
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          reviewText,
-          style: theme.textTheme.titleMedium,
-        ),
-        SizedBox(
-          height: 12.v,
-        ),
-        SizedBox(
-          height: 400.v,
-          child: ListView.builder(
-              itemCount: 3,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                final item = reviewListinfo[index];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomImageView(
-                          imagePath: item.imagePath,
-                          height: 40.adaptSize,
-                          width: 40.adaptSize,
-                          radius: BorderRadius.circular(20.h),
-                          margin: EdgeInsets.only(bottom: 57.v),
-                        ),
-                        Expanded(
-                            child: Padding(
-                          padding: EdgeInsets.only(left: 15.h, top: 3.v),
-                          child: Column(
+    return GetBuilder<ReviewController>(
+        init: ReviewController(),
+        builder: (context) {
+          final reviewListinfo = Get.find<ReviewController>().reviewListinfo;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                reviewText,
+                style: theme.textTheme.titleMedium,
+              ),
+              SizedBox(
+                height: 12.v,
+              ),
+              SizedBox(
+                height: 400.v,
+                child: ListView.builder(
+                    itemCount: 3,
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final item = reviewListinfo[index];
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _buildReviewInfo(
-                                  todayText: item.time!,
-                                  userName: item.userName!),
-                              SizedBox(
-                                height: 12.v,
+                              CustomImageView(
+                                imagePath: item.imagePath,
+                                height: 40.adaptSize,
+                                width: 40.adaptSize,
+                                radius: BorderRadius.circular(20.h),
+                                margin: EdgeInsets.only(bottom: 57.v),
                               ),
-                              CustomRatingBar(
-                                initialRating: item.rating,
-                                color: Color(0xFFFCD240),
-                              ),
-                              Container(
-                                width: 247.h,
-                                margin: EdgeInsets.only(right: 11.h),
-                                child: Text(
-                                  item.message!,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodySmall!
-                                      .copyWith(height: 1.83),
+                              Expanded(
+                                  child: Padding(
+                                padding: EdgeInsets.only(left: 15.h, top: 3.v),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _buildReviewInfo(
+                                        todayText: item.time!,
+                                        userName: item.userName!),
+                                    SizedBox(
+                                      height: 12.v,
+                                    ),
+                                    CustomRatingBar(
+                                      initialRating: item.rating,
+                                      color: Color(0xFFFCD240),
+                                    ),
+                                    Container(
+                                      width: 247.h,
+                                      margin: EdgeInsets.only(right: 11.h),
+                                      child: Text(
+                                        item.message!,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: theme.textTheme.bodySmall!
+                                            .copyWith(height: 1.83),
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              )
+                              ))
                             ],
                           ),
-                        ))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 27.v,
-                    ),
-                  ],
-                );
-              }),
-        ),
-        CustomOutlineButton(
-          text: 'See All Review'.toUpperCase(),
-          onPressed: () => Get.toNamed(Routes.productReview),
-        )
-      ],
-    );
+                          SizedBox(
+                            height: 27.v,
+                          ),
+                        ],
+                      );
+                    }),
+              ),
+              CustomOutlineButton(
+                text: 'See All Review'.toUpperCase(),
+                onPressed: () => Get.toNamed(Routes.productReview),
+              )
+            ],
+          );
+        });
   }
 
   Widget _buildReviewInfo(

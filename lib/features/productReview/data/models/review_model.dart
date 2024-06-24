@@ -1,4 +1,5 @@
-import 'package:shoesly/crore/utils/constants.dart';
+import 'package:shoesly/core/utils/constants.dart';
+import 'package:shoesly/core/utils/date_time_utils.dart';
 
 class ReviewModel {
   ReviewModel({
@@ -17,9 +18,12 @@ class ReviewModel {
   String? time;
 
   ReviewModel.fromJson(Map<String, dynamic> json) {
+    DateTime date = json['time'].toDate();
+    //  DateTime.fromMillisecondsSinceEpoch(int.parse(json['time'].toString()));
+    String formattedDate = date.customFormat();
     message = json['message'];
     rating = double.parse((json['rating']).toString());
-    time = json['time'].toString();
+    time = formattedDate;
     userID = json['userID'];
   }
 

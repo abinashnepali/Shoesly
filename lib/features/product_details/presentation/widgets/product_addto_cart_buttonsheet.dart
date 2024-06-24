@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_text_formField.dart';
-import 'package:shoesly/crore/utils/common_widgets.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/app_decoration.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_text_formField.dart';
+import 'package:shoesly/core/utils/common_widgets.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/product_details/presentation/controller/product_addto_cart_buttonsheet_controller.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/product_cart_buttonsheet.dart';
 

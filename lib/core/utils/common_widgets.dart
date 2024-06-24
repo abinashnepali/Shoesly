@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_elevated_button.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/app_decoration.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/widgets/custom_elevated_button.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
 class CommonWidget {
   static Widget bottomPriceAndCart(

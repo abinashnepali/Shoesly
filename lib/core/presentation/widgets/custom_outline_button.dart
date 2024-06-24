@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/widgets/base_button.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/widgets/base_button.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
-class CustomElevatedButton extends BaseButton {
-  CustomElevatedButton(
+class CustomOutlineButton extends BaseButton {
+  CustomOutlineButton(
       {Key? key,
       this.decoration,
       this.leftIcon,
       this.rightIcon,
+      this.label,
       EdgeInsets? margin,
       VoidCallback? onPressed,
       ButtonStyle? buttonStyle,
@@ -32,23 +33,24 @@ class CustomElevatedButton extends BaseButton {
   final BoxDecoration? decoration;
   final Widget? leftIcon;
   final Widget? rightIcon;
+  final Widget? label;
 
   @override
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
             alignment: alignment!,
-            child: buildElevatedButtonWidget,
+            child: buildOutlineButtonWidget,
           )
-        : buildElevatedButtonWidget;
+        : buildOutlineButtonWidget;
   }
 
-  Widget get buildElevatedButtonWidget => Container(
+  Widget get buildOutlineButtonWidget => Container(
         height: this.height ?? 50.v,
         width: this.width ?? double.maxFinite,
         margin: marign,
         decoration: decoration,
-        child: ElevatedButton(
+        child: OutlinedButton(
           style: buttonStyle,
           onPressed: isDisabled ?? false ? null : onPressed ?? () {},
           child: Row(
@@ -58,8 +60,7 @@ class CustomElevatedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text!,
-                style: buttontextStyle ??
-                    CustomTextStyles.titleSmallSecondaryContainer,
+                style: buttontextStyle ?? theme.textTheme.titleSmall,
               ),
               rightIcon ?? const SizedBox.shrink()
             ],

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/routes/app_routes.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_elevated_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/app_decoration.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/routes/app_routes.dart';
+import 'package:shoesly/core/presentation/widgets/custom_elevated_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
+import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 
 class ProductCartBottomSheet extends StatelessWidget {
   const ProductCartBottomSheet({super.key, required this.itemNO});

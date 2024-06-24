@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/routes/app_routes.dart';
-import 'package:shoesly/crore/utils/constants.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/routes/app_routes.dart';
+import 'package:shoesly/core/utils/constants.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/discover/presentation/controller/discover_controller.dart';
 import 'package:shoesly/features/discover/presentation/widgets/productgrid_item_widget.dart';
 

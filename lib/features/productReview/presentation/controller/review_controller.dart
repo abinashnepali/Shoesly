@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:shoesly/crore/presentation/widgets/loading_dialog.dart';
-import 'package:shoesly/crore/presentation/widgets/toast.dart';
+import 'package:shoesly/core/presentation/widgets/loading_dialog.dart';
+import 'package:shoesly/core/presentation/widgets/toast.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
 import 'package:shoesly/features/productReview/data/repository/review_repository.dart';
 

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
-import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
-import 'package:shoesly/crore/utils/size_utils.dart';
+import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
+import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
+import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
+import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
+import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
+import 'package:shoesly/features/productReview/presentation/controller/review_controller.dart';
 import 'package:shoesly/features/productReview/presentation/controller/review_tab_controller.dart';
 import 'widgets/review_widget.dart';
 
@@ -34,18 +35,24 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
               SizedBox(
                 height: 30.v,
               ),
-              SizedBox(
-                  height: 967.v,
-                  child: TabBarView(
-                      controller: controller.tabviewContainer,
-                      children: [
-                        ReviewWidget(reviewitems: reviewListinfo),
-                        ReviewWidget(reviewitems: reviewListinfo),
-                        ReviewWidget(reviewitems: reviewListinfo),
-                        ReviewWidget(reviewitems: reviewListinfo),
-                        ReviewWidget(reviewitems: reviewListinfo),
-                        ReviewWidget(reviewitems: reviewListinfo)
-                      ])),
+              GetBuilder<ReviewController>(
+                  init: ReviewController(),
+                  builder: (context) {
+                    final reviewListinfo =
+                        Get.find<ReviewController>().reviewListinfo;
+                    return SizedBox(
+                        height: 967.v,
+                        child: TabBarView(
+                            controller: controller.tabviewContainer,
+                            children: [
+                              ReviewWidget(reviewitems: reviewListinfo),
+                              ReviewWidget(reviewitems: reviewListinfo),
+                              ReviewWidget(reviewitems: reviewListinfo),
+                              ReviewWidget(reviewitems: reviewListinfo),
+                              ReviewWidget(reviewitems: reviewListinfo),
+                              ReviewWidget(reviewitems: reviewListinfo)
+                            ]));
+                  }),
             ],
           )),
         ),
