@@ -6,12 +6,12 @@ import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
-import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
+import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 
 class ProductGridItemWidget extends StatelessWidget {
   ProductGridItemWidget(this.productinfo, {super.key});
 
-  ProductgirdItemModel productinfo;
+  ProductDetailsModel productinfo;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class ProductGridItemWidget extends StatelessWidget {
                             size: 12,
                           ),
                           Text(
-                            productinfo.rating!,
+                            "${productinfo.rating!}",
                             style: theme.textTheme.labelMedium,
                           )
                         ],
@@ -105,7 +105,7 @@ class ProductGridItemWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    productinfo.price!,
+                    '\$${productinfo.price!}',
                     style: theme.textTheme.titleSmall,
                   ),
                 )

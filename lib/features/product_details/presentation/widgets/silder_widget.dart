@@ -7,7 +7,9 @@ import 'package:shoesly/crore/utils/constants.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
 
 class SliderWidget extends StatelessWidget {
-  SliderWidget({super.key});
+  SliderWidget({super.key, this.imagePath});
+
+  String? imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class SliderWidget extends StatelessWidget {
               height: 59.v,
             ),
             CustomImageView(
-              imagePath: '${Constants.productImage}/Product.png',
+              imagePath: imagePath ?? '${Constants.productImage}/Product.png',
               height: 174.v,
               width: 252.h,
               fit: BoxFit.contain,

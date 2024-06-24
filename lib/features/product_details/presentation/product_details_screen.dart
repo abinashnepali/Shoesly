@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:shoesly/crore/presentation/resources/app_decoration.dart';
 import 'package:shoesly/crore/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/crore/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/crore/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:shoesly/crore/presentation/widgets/custom_elevated_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_outline_button.dart';
 import 'package:shoesly/crore/presentation/widgets/custom_rating_bar.dart';
 import 'package:shoesly/crore/utils/common_widgets.dart';
 import 'package:shoesly/crore/utils/size_utils.dart';
-import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
+import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
 import 'package:shoesly/features/product_details/data/models/sizeselection_item_model.dart';
 import 'package:shoesly/features/product_details/presentation/widgets/product_addto_cart_buttonsheet.dart';
@@ -22,12 +20,9 @@ import 'package:shoesly/features/product_details/presentation/widgets/silder_wid
 import 'package:shoesly/features/product_details/presentation/widgets/sizeselection_item_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  final ProductgirdItemModel? productDetailsModel;
+  final ProductDetailsModel? productDetailsModel;
 
   ProductDetailsScreen({super.key, required this.productDetailsModel});
-
-  final String productDesc =
-      'Engineered to crush any movement-base woekout, these On sneakers enhance the label\'s original Cloud sneakers with cutting edge techloges for a pair';
 
   void _showAddToCartBottomSheet(BuildContext context) {
     if (Get.isBottomSheetOpen == null || !Get.isBottomSheetOpen!) {
@@ -43,7 +38,7 @@ class ProductDetailsScreen extends StatelessWidget {
     if (productDetailsModel == null) {
       return Scaffold(
         appBar: _buildAppbar(),
-        body: Center(
+        body: const Center(
           child: Text('No product details available'),
         ),
       );
@@ -80,14 +75,13 @@ class ProductDetailsScreen extends StatelessWidget {
                       Row(
                         children: [
                           CustomRatingBar(
-                            initialRating:
-                                double.parse(productDetailsModel!.rating!),
+                            initialRating: productDetailsModel!.rating!,
                             color: Color(0xFFFCD240),
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 5.h),
                             child: Text(
-                              productDetailsModel!.rating!,
+                              productDetailsModel!.rating!.toString(),
                               style: theme.textTheme.labelMedium,
                             ),
                           ),
@@ -127,7 +121,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         width: 300.h,
                         margin: EdgeInsets.only(right: 14.h),
                         child: Text(
-                          productDesc,
+                          productDetailsModel!.description!,
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: CustomTextStyles.bodyMediumGray600.copyWith(
@@ -273,7 +267,9 @@ class ProductDetailsScreen extends StatelessWidget {
                 }),
               ),
               itemBuilder: (context, index, realIndex) {
-                return SliderWidget();
+                return SliderWidget(
+                  imagePath: productDetailsModel?.productImage,
+                );
               }),
         ],
       ),
@@ -344,7 +340,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                 width: 247.h,
                                 margin: EdgeInsets.only(right: 11.h),
                                 child: Text(
-                                  item.reviewMessage!,
+                                  item.message!,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: theme.textTheme.bodySmall!

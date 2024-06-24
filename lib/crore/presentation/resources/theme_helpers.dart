@@ -7,7 +7,7 @@ LightCodeColors get appTheme => ThemeHelper().themeColor();
 ThemeData get theme => ThemeHelper().themeData();
 
 class ThemeHelper {
-  final _appTheme = PrefUtils().getThemeData();
+  final _appTheme =null  ;//= PrefUtils().getThemeData();
 
   final Map<String, LightCodeColors> _supportedCustomColor = {
     'lightcode': LightCodeColors()

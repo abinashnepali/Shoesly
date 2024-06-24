@@ -62,7 +62,7 @@ class ReviewWidget extends StatelessWidget {
                                   width: 247.h,
                                   margin: EdgeInsets.only(right: 11.h),
                                   child: Text(
-                                    item.reviewMessage!,
+                                    item.message!,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: theme.textTheme.bodySmall!

@@ -1,3 +1,5 @@
+import 'package:shoesly/crore/utils/constants.dart';
+
 class ProductDetailsModel {
   ProductDetailsModel(
       {required this.brandImage,
@@ -6,25 +8,44 @@ class ProductDetailsModel {
       required this.rating,
       required this.reviewCount,
       required this.price,
-      required this.id});
+      required this.id,
+      this.description,
+      this.color,
+      this.gender,
+      this.size});
 
   String? brandImage;
   String? productImage;
   String? productName;
   double? rating;
-  int? reviewCount;
+  String? reviewCount;
   double? price;
   String? id;
+  String? description;
+  String? color;
+  String? gender;
+  String? size;
 
   factory ProductDetailsModel.fromMap(Map<String, dynamic> map) {
+    String imagefilePath = '';
+    map['productImage'] != null
+        ? imagefilePath = '${Constants.productImage}/${map['productImage']}'
+        : imagefilePath = Constants.noImage;
+
     return ProductDetailsModel(
-      brandImage: map['brandImage'],
-      productImage: map['productImage'],
-      productName: map['productName'] as String,
-      rating: map['rating'] as double, // Ensure rating is a double
-      reviewCount: map['reviewCount'] as int, // Ensure reviewCount is an int
-      price: map['price'] as double, // Ensure price is a double
-      id: map['id'] as String,
-    );
+        brandImage: '${Constants.imgBrand}/${map['brandImage'] ?? ''}',
+        productImage: imagefilePath,
+        productName: map['productName'] ?? '',
+        rating: double.parse((map['rating'] ?? '1').toString()),
+        reviewCount: map['reviewCount'],
+        price: double.parse((map['price'] ?? 00.00).toString()),
+        id: map['id'] ?? '',
+        description: map['description'] ?? '',
+        color: map['color'] ?? '',
+        gender: map['gender'] ?? '',
+        size: map['size'] ?? '');
   }
 }
+
+  //  brandImage: '${Constants.imgBrand}/nike.png',
+  //     productImage: '${Constants.productImage}/Product.png',

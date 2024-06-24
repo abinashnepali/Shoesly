@@ -76,7 +76,7 @@ class DiscoverScreen extends StatelessWidget {
           return GridView.builder(
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 230.v,
+                  mainAxisExtent: 250.v,
                   crossAxisCount: 2,
                   mainAxisSpacing: 15.h,
                   crossAxisSpacing: 20.h),

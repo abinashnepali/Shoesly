@@ -3,6 +3,7 @@ import 'package:shoesly/crore/di/core_binding.dart';
 import 'package:shoesly/crore/presentation/routes/app_routes.dart';
 import 'package:shoesly/features/cart/di/bindings/cart_binding.dart';
 import 'package:shoesly/features/cart/presentation/cart_screen.dart';
+import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
 import 'package:shoesly/features/discover/di/discover_binding.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
@@ -10,7 +11,7 @@ import 'package:shoesly/features/filter/presentation/filter_screen.dart';
 import 'package:shoesly/features/home_tab_container/data/di/home_tab_container_binding.dart';
 import 'package:shoesly/features/home_tab_container/home_tab_container_screen.dart';
 import 'package:shoesly/features/orderSummary/presentation/order_summary_screen.dart';
-import 'package:shoesly/features/productReview/di/review_controller_binding.dart';
+import 'package:shoesly/features/productReview/di/review_binding.dart';
 import 'package:shoesly/features/product_details/di/product_details_bindings.dart';
 import 'package:shoesly/features/product_details/presentation/product_details_screen.dart';
 import 'package:shoesly/features/productReview/presentation/product_review_screen.dart';
@@ -41,7 +42,7 @@ class AppPages {
         page: () {
           final arguments = Get.arguments;
           final productDetailsModel =
-              arguments is ProductgirdItemModel ? arguments : null;
+              arguments is ProductDetailsModel ? arguments : null;
 
           return ProductDetailsScreen(
             productDetailsModel: productDetailsModel,
