@@ -70,21 +70,35 @@ class DiscoverScreen extends StatelessWidget {
     return GetBuilder<DiscoverController>(
         init: DiscoverController(),
         builder: (context) {
-          final _productinfo =
-              Get.find<DiscoverController>().productDetailsResponse;
-
-          return GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 250.v,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 15.h,
-                  crossAxisSpacing: 20.h),
-              physics: const BouncingScrollPhysics(),
-              itemCount: _productinfo.length,
-              itemBuilder: (context, index) {
-                return ProductGridItemWidget(_productinfo[index]);
-              });
+          final _productResponse =
+              Get.find<DiscoverController>().productDetailsApiResponse;
+          final _productinfo = _productResponse.data;
+          return _productResponse.isLoading
+              ? const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                )
+              : _productResponse.hasData
+                  ? GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisExtent: 250.v,
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 15.h,
+                          crossAxisSpacing: 20.h),
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: _productinfo.length,
+                      itemBuilder: (context, index) {
+                        return ProductGridItemWidget(_productinfo[index]);
+                      })
+                  : const SizedBox(child: Text('No Product Data'));
         });
   }
 }

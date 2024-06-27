@@ -23,13 +23,13 @@ class ColorSectionWidget extends StatelessWidget {
             child: RawChip(
               padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.v),
               showCheckmark: false,
-              labelPadding: EdgeInsets.only(left: 10),
+              labelPadding: const EdgeInsets.only(left: 10),
               avatar: ClipOval(
                   child: Container(
                       decoration: BoxDecoration(
                         color: sortItem.itemColor,
                       ),
-                      child: SizedBox(
+                      child: const SizedBox(
                         width: 24,
                         height: 24,
                       ))),

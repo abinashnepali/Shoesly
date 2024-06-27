@@ -45,10 +45,10 @@ class ProductCartBottomSheet extends StatelessWidget {
                 Align(
                     alignment: Alignment.center,
                     child: CustomIconButton(
-                      alignment: Alignment.topCenter,
+                      alignment: Alignment.center,
                       icon: Icons.check,
                       color: Color(0xFF101010),
-                      iconSize: 40,
+                      iconSize: 42,
                       onPressed: () {},
                     )),
               ]),

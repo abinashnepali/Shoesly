@@ -5,16 +5,16 @@ import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:shoesly/core/presentation/widgets/custom_dialog.dart';
 import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/core/utils/common_widgets.dart';
-import 'package:shoesly/core/utils/constants.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
-import 'package:shoesly/features/cart/data/models/product_details_cart_model.dart';
+import 'package:shoesly/features/cart/presentation/controller/local_cart_controller.dart';
 import 'package:shoesly/features/cart/presentation/widgets/cart_product_item_widget.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  CartScreen({super.key});
+
+  final _localCartContoller = Get.find<LocalCartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class CartScreen extends StatelessWidget {
         icon: Icons.arrow_back_rounded,
         onPressed: () => Get.back(),
       ),
-      title: Padding(
+      title: const Padding(
         padding: EdgeInsets.zero,
         child: Text(
           'Cart',
@@ -64,12 +64,13 @@ class CartScreen extends StatelessWidget {
   }
 
   Widget _buildProductList() {
+    final _cartItems = _localCartContoller.cartItemList;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.h),
       child: ListView.separated(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: productDetailsCartList.length,
+          itemCount: _cartItems.length, //productDetailsCartList.length,
           separatorBuilder: ((context, index) {
             return SizedBox(
               height: 30.v,
@@ -81,13 +82,15 @@ class CartScreen extends StatelessWidget {
               background: slideLeftBackground(),
               direction: DismissDirection.endToStart,
               onDismissed: (direction) {
-                const CustomDialog(
-                    titleText: Constants.deleteConfirm,
-                    buttonOneLabel: 'Back',
-                    buttonTwoLabel: 'Yes');
+                _localCartContoller.removeCartItem(_cartItems[index]);
+
+                // const CustomDialog(
+                //     titleText: Constants.deleteConfirm,
+                //     buttonOneLabel: 'Back',
+                //     buttonTwoLabel: 'Yes');
               },
               child: CartProductItemWidget(
-                cartItem: productDetailsCartList[index],
+                cartItem: _cartItems[index],
                 index: index,
               ),
             );

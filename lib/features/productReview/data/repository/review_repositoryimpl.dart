@@ -6,7 +6,6 @@ import 'package:shoesly/core/data/firebase/network_exception.dart';
 import 'package:shoesly/core/data/firebase/network_info.dart';
 import 'package:shoesly/core/utils/constants.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
-import 'package:shoesly/features/productReview/data/models/user_model.dart';
 import 'package:shoesly/features/productReview/data/repository/review_repository.dart';
 
 class ReviewRepositoryimpl implements ReviewRepository {
@@ -49,7 +48,6 @@ class ReviewRepositoryimpl implements ReviewRepository {
           final exception = FirebaseExceptionMapper.mapFirebaseException(e);
           return ApiResponse(error: exception);
         }
-        print(e.toString());
         return ApiResponse(error: e.toString());
       }
     } //

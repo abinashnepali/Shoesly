@@ -101,7 +101,7 @@ class CustomImageView extends StatelessWidget {
     if (imagePath != null) {
       switch (imagePath!.imageType) {
         case ImageType.svg:
-          return Container(
+          return SizedBox(
             height: height,
             width: width,
             child: SvgPicture.asset(
@@ -131,7 +131,7 @@ class CustomImageView extends StatelessWidget {
             fit: fit ?? BoxFit.cover,
             imageUrl: imagePath!,
             color: color,
-            placeholder: ((context, url) => Container(
+            placeholder: ((context, url) => SizedBox(
                   height: 30,
                   width: 30,
                   child: LinearProgressIndicator(
@@ -158,6 +158,6 @@ class CustomImageView extends StatelessWidget {
           );
       }
     }
-    return SizedBox();
+    return const SizedBox();
   }
 }

@@ -4,7 +4,6 @@ import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/features/cart/di/bindings/cart_binding.dart';
 import 'package:shoesly/features/cart/presentation/cart_screen.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
-import 'package:shoesly/features/discover/data/models/productgrid_item_model.dart';
 import 'package:shoesly/features/discover/di/discover_binding.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
 import 'package:shoesly/features/filter/presentation/filter_screen.dart';
@@ -30,7 +29,8 @@ class AppPages {
           CoreBindings(),
           HomeTabContainerBinding(),
           ProductDetailBindings(),
-          DiscoverBinding()
+          DiscoverBinding(),
+          CartControllerBindings()
         ]),
     GetPage(name: Routes.discover, page: DiscoverScreen.new),
     GetPage(name: Routes.orderSummary, page: OrderSummary.new),
@@ -48,7 +48,11 @@ class AppPages {
             productDetailsModel: productDetailsModel,
           );
         },
-        bindings: [ProductDetailBindings(), ReviewControllerBinding()]),
+        bindings: [
+          ReviewControllerBinding(),
+          ProductDetailBindings(),
+          CartControllerBindings()
+        ]),
     GetPage(
         name: Routes.productReview,
         page: ProductReviewScreen.new,

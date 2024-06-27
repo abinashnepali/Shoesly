@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 
 class CustomIconButton extends StatelessWidget {
   final IconData icon;
@@ -31,8 +30,10 @@ class CustomIconButton extends StatelessWidget {
 
   Widget get buildIconButton => IconButton(
         icon: Icon(icon),
-        color: color ?? Color(0xFF101010),
+        color: color ?? const Color(0xFF101010),
         onPressed: onPressed,
         iconSize: iconSize ?? 24,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       );
 }

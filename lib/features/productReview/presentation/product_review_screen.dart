@@ -38,20 +38,35 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
               GetBuilder<ReviewController>(
                   init: ReviewController(),
                   builder: (context) {
-                    final reviewListinfo =
-                        Get.find<ReviewController>().reviewListinfo;
-                    return SizedBox(
-                        height: 967.v,
-                        child: TabBarView(
-                            controller: controller.tabviewContainer,
-                            children: [
-                              ReviewWidget(reviewitems: reviewListinfo),
-                              ReviewWidget(reviewitems: reviewListinfo),
-                              ReviewWidget(reviewitems: reviewListinfo),
-                              ReviewWidget(reviewitems: reviewListinfo),
-                              ReviewWidget(reviewitems: reviewListinfo),
-                              ReviewWidget(reviewitems: reviewListinfo)
-                            ]));
+                    // final reviewListinfo =
+                    //     Get.find<ReviewController>().reviewListinfo;
+                    final reviewApiResponse =
+                        Get.find<ReviewController>().reviewApireponse;
+
+                    return reviewApiResponse.isInitial
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.blue,
+                            ),
+                          )
+                        : reviewApiResponse.data.isEmpty
+                            ? const Center(
+                                child: SizedBox(
+                                  child: Text('NO Review Data'),
+                                ),
+                              )
+                            : SizedBox(
+                                height: 967.v,
+                                child: TabBarView(
+                                    controller: controller.tabviewContainer,
+                                    children: [
+                                      ReviewWidget(reviewitems: reviewListinfo),
+                                      ReviewWidget(reviewitems: reviewListinfo),
+                                      ReviewWidget(reviewitems: reviewListinfo),
+                                      ReviewWidget(reviewitems: reviewListinfo),
+                                      ReviewWidget(reviewitems: reviewListinfo),
+                                      ReviewWidget(reviewitems: reviewListinfo)
+                                    ]));
                   }),
             ],
           )),
@@ -64,7 +79,7 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
     return CustomeAppBar(
       styleType: Style.mediumFill,
       height: 80.v,
-      title: SizedBox(height: 26, child: Text('Review(1045)')),
+      title: const SizedBox(height: 26, child: Text('Review(1045)')),
       titleTextStyle: CustomTextStyles.titleMediumBlack9001,
       centerTitle: true,
       leadingWidth: 54.h,
@@ -81,12 +96,12 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox.shrink(),
+              const SizedBox.shrink(),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
                     size: 20,
                     color: Color(0xFFFCD240),

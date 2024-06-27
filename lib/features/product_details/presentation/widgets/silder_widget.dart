@@ -14,7 +14,7 @@ class SliderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Color> shoeColor = [
-      Color(0xFFE7E7E7),
+      const Color(0xFFE7E7E7),
       Colors.black,
       Colors.green,
       Colors.blue
@@ -73,7 +73,7 @@ class SliderWidget extends StatelessWidget {
                                       size: 12,
                                     ),
                                   )
-                                : SizedBox()),
+                                : const SizedBox()),
                       ),
                     );
                   }),

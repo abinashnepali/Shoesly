@@ -38,7 +38,7 @@ class CustomDialog extends StatelessWidget {
             color: appTheme.gray200),
         child: CupertinoAlertDialog(
           title: Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Text(titleText!,
                 style: titleTextStyle ?? CustomTextStyles.titleMediumBlack9001),
           ),
@@ -50,7 +50,7 @@ class CustomDialog extends StatelessWidget {
                     style: CustomTextStyles.bodySmallGray700,
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           actions: [
             CustomOutlineButton(
               text: buttonOneLabel!,

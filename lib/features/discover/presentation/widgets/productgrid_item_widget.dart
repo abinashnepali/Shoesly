@@ -16,7 +16,7 @@ class ProductGridItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxHeight: 300, // Adjust the max height as needed
       ),
       child: Column(

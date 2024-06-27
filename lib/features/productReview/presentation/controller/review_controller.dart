@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shoesly/core/data/firebase/api_response.dart';
 import 'package:shoesly/core/presentation/widgets/loading_dialog.dart';
 import 'package:shoesly/core/presentation/widgets/toast.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';
@@ -9,13 +10,20 @@ class ReviewController extends GetxController {
   void onInit() {
     super.onInit();
     reviewRepository = Get.find<ReviewRepository>();
+
     fetchAllReview();
   }
 
   List<ReviewModel> _reviewinfoResponse = [];
 
+  late ApiResponse _reviewApiResponse;
+
   //  fetch review
   Future<void> fetchAllReview() async {
+    if (_reviewinfoResponse.isNotEmpty) {
+      return;
+    }
+
     CustomLoadingDialog.showProgressDialog();
     List<ReviewModel> _reviewList = [];
 
@@ -24,13 +32,13 @@ class ReviewController extends GetxController {
       showFailureToast(reviewResponse.error.toString());
     } else {
       if (reviewResponse.hasData) {
-        // _reviewList.add(reviewResponse.data);
         reviewDateResponse = reviewResponse.data;
       } //
       else {
         showFailureToast('No data available');
       }
     }
+    reviewAPIResponse = reviewResponse;
   }
 
   set reviewDateResponse(List<ReviewModel> response) {
@@ -38,7 +46,14 @@ class ReviewController extends GetxController {
     update();
   }
 
+  set reviewAPIResponse(ApiResponse apiResponse) {
+    _reviewApiResponse = apiResponse;
+    update();
+  }
+
   get reviewListinfo => _reviewinfoResponse;
+
+  get reviewApireponse => _reviewApiResponse;
 
   // End of fetch review
 }

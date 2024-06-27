@@ -26,7 +26,7 @@ class OrderSummary extends StatelessWidget {
                   child: SingleChildScrollView(
                       child: Container(
                     margin: EdgeInsets.only(bottom: 5.v),
-                    padding: EdgeInsets.only(left: 30, right: 16),
+                    padding: const EdgeInsets.only(left: 30, right: 16),
                     child: Column(
                       children: [
                         _buildPaymentSection(),
@@ -54,7 +54,7 @@ class OrderSummary extends StatelessWidget {
                           height: 250,
                           child: ListView.builder(
                               itemCount: 3,
-                              physics: BouncingScrollPhysics(),
+                              physics: const BouncingScrollPhysics(),
                               itemBuilder: (context, index) =>
                                   _buildOrderDetailsSection()),
                         ),
@@ -90,7 +90,7 @@ class OrderSummary extends StatelessWidget {
         icon: Icons.arrow_back_rounded,
         onPressed: () => Get.back(),
       ),
-      title: Padding(
+      title: const Padding(
         padding: EdgeInsets.zero,
         child: Text(
           'Order Summary',

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
+import 'package:shoesly/core/data/firebase/api_response.dart';
 
-import 'package:shoesly/core/presentation/widgets/loading_dialog.dart';
 import 'package:shoesly/core/presentation/widgets/toast.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 import 'package:shoesly/features/discover/data/repository/discovery_repository.dart';
@@ -15,15 +15,13 @@ class DiscoverController extends GetxController {
   }
 
   List<ProductDetailsModel> productList = [];
-  List<ProductDetailsModel> _productDetailsResponse = [];
+  ApiResponse _productDetailsResponse = ApiResponse(isLoading: true);
 
 // fetch products from firebase
-  fetchProductList({bool filter = false}) async {
-    CustomLoadingDialog.showProgressDialog();
-    await Future.delayed(Duration(seconds: 3));
-
+  Future<void> fetchProductList({bool filter = false}) async {
     final productresponse = await discoveryRepository.getAllProduct();
-    CustomLoadingDialog.hideProgressDialog();
+    _productDetailsResponse.isLoading = false;
+    productDetailsResponse = productresponse;
 
     if (productresponse.hasError) {
       showFailureToast(productresponse.error.toString());
@@ -31,18 +29,18 @@ class DiscoverController extends GetxController {
       if (productresponse.data.length > 1) {
         if (filter == true) productList.clear();
         productList.addAll(productresponse.data);
-        productDetailsResponse = productList;
+        //  productDetailsResponse = productList;
+        productDetailsResponse = productresponse;
       } else {
         // showFailureToast(productresponse.error.toString());
       }
     }
   }
 
-  set productDetailsResponse(List<ProductDetailsModel> response) {
+  set productDetailsResponse(ApiResponse response) {
     _productDetailsResponse = response;
     update();
   }
 
-  List<ProductDetailsModel> get productDetailsResponse =>
-      _productDetailsResponse;
+  get productDetailsApiResponse => _productDetailsResponse;
 }

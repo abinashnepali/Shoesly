@@ -191,7 +191,7 @@ class FilterScreen extends StatelessWidget {
 
   Widget _buildSortBySectionWidget() {
     return Padding(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -239,7 +239,7 @@ class FilterScreen extends StatelessWidget {
 
   Widget _buildGenderSectionWidget() {
     return Padding(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -272,7 +272,7 @@ class FilterScreen extends StatelessWidget {
 
   Widget _buildColorSectionWidget() {
     return Padding(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

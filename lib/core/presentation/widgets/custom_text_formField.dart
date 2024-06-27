@@ -82,6 +82,7 @@ class CustomTextFormField extends StatelessWidget {
           decoration: _decoration,
           validator: validator,
           cursorColor: ColorSchemes.lighCodeColorSchema.onPrimaryContainer,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
       );
 

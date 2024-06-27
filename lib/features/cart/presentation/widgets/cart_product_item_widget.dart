@@ -7,17 +7,17 @@ import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/core/presentation/widgets/custom_image_view.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
-import 'package:shoesly/features/cart/data/models/product_details_cart_model.dart';
-import 'package:shoesly/features/cart/presentation/controller/cart_item_controller.dart';
+import 'package:shoesly/features/cart/data/models/cart_model.dart';
+import 'package:shoesly/features/cart/presentation/controller/local_cart_controller.dart';
 
 class CartProductItemWidget extends StatelessWidget {
   CartProductItemWidget(
       {super.key, required this.cartItem, required this.index});
 
-  final ProductDetailsCartModel cartItem;
+  final CartItemModel cartItem;
   final int index;
 
-  final CartItemController cartController = Get.put(CartItemController());
+  final LocalCartController cartController = Get.find<LocalCartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class CartProductItemWidget extends StatelessWidget {
                         style: theme.textTheme.titleSmall,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Row(
@@ -121,17 +121,24 @@ class CartProductItemWidget extends StatelessWidget {
                           SizedBox(
                             width: 20,
                             child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Obx(() => Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Text(
-                                      cartItem.numberOfQuantity.toString(),
-                                      style:
-                                          CustomTextStyles.titleSmallBlack90001,
-                                      overflow: TextOverflow.fade,
-                                    ),
-                                  )),
-                            ),
+                                alignment: Alignment.bottomCenter,
+                                child: GetBuilder(
+                                    init: LocalCartController(),
+                                    builder: (context) {
+                                      final cartController =
+                                          Get.find<LocalCartController>()
+                                              .cartItemList[index];
+
+                                      return Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: Text(
+                                          cartController.noOfQty.toString(),
+                                          style: CustomTextStyles
+                                              .titleSmallBlack90001,
+                                          overflow: TextOverflow.fade,
+                                        ),
+                                      );
+                                    })),
                           ),
                           const SizedBox(
                             width: 2,

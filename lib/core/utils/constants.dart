@@ -20,4 +20,6 @@ class Constants {
   static const reviewdList = "review";
   static const sizeinfo = "size";
   static const userinfo = "users";
+  static const firebaseCart = "carts";
+  static const firebaseCartItem = "cartItems";
 }

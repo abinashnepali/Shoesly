@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/widgets/custom_image_view.dart';
-import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
 import 'package:shoesly/core/presentation/widgets/custom_rating_bar.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
 import 'package:shoesly/features/productReview/data/models/review_model.dart';

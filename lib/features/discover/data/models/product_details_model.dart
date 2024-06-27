@@ -39,7 +39,7 @@ class ProductDetailsModel {
         rating: double.parse((map['rating'] ?? '1').toString()),
         reviewCount: map['reviewCount'],
         price: double.parse((map['price'] ?? 00.00).toString()),
-        id: map['id'] ?? '',
+        id: map['productId'] ?? '',
         description: map['description'] ?? '',
         color: map['color'] ?? '',
         gender: map['gender'] ?? '',
