@@ -22,4 +22,7 @@ class Constants {
   static const userinfo = "users";
   static const firebaseCart = "carts";
   static const firebaseCartItem = "cartItems";
+
+//sharePerf
+  static const perfcartItemList = 'perfcartItemList';
 }

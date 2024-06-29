@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 
 import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
-import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/core/utils/common_widgets.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
+import 'package:shoesly/features/cart/presentation/controller/cart_item_controller.dart';
 import 'package:shoesly/features/cart/presentation/controller/local_cart_controller.dart';
 import 'package:shoesly/features/cart/presentation/widgets/cart_product_item_widget.dart';
 
@@ -19,19 +19,25 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      appBar: _appBarSection(),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.symmetric(vertical: 30.v),
-          child: Column(
-            children: [_buildProductList()],
-          ),
-        ),
-      ),
-      bottomNavigationBar: _buildBottonNavigation(),
-    ));
+        child: GetBuilder<LocalCartController>(
+            init: LocalCartController(),
+            builder: (context) {
+              return Scaffold(
+                appBar: _appBarSection(),
+                body: SingleChildScrollView(
+                  child: Container(
+                    width: double.maxFinite,
+                    padding: EdgeInsets.symmetric(vertical: 30.v),
+                    child: Column(
+                      children: [_buildProductList()],
+                    ),
+                  ),
+                ),
+                bottomNavigationBar: _localCartContoller.cartItemList.isNotEmpty
+                    ? _buildBottonNavigation()
+                    : const SizedBox.shrink(),
+              );
+            }));
   }
 
   PreferredSizeWidget _appBarSection() {
@@ -54,48 +60,59 @@ class CartScreen extends StatelessWidget {
   }
 
   Widget _buildBottonNavigation() {
-    return CommonWidget.bottomPriceAndCart(
-        buttonLabel: 'Check Out',
-        labelText: 'Grand Total',
-        price: '\$7005.00',
-        onPressed: () {
-          Get.toNamed(Routes.orderSummary);
+    return GetBuilder<LocalCartController>(
+        init: Get.find<LocalCartController>(),
+        builder: (context) {
+          final grandTotal = Get.find<LocalCartController>().grandTotalPrice;
+          return CommonWidget.bottomPriceAndCart(
+              buttonLabel: 'Check Out',
+              labelText: 'Grand Total',
+              price: '\$ $grandTotal',
+              onPressed: () {
+                Get.find<CartItemController>().addToCartOnFirebase();
+              });
         });
   }
 
   Widget _buildProductList() {
     final _cartItems = _localCartContoller.cartItemList;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.h),
-      child: ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: _cartItems.length, //productDetailsCartList.length,
-          separatorBuilder: ((context, index) {
-            return SizedBox(
-              height: 30.v,
-            );
-          }),
-          itemBuilder: ((context, index) {
-            return Dismissible(
-              key: Key(index.toString()),
-              background: slideLeftBackground(),
-              direction: DismissDirection.endToStart,
-              onDismissed: (direction) {
-                _localCartContoller.removeCartItem(_cartItems[index]);
+    return _cartItems.isEmpty
+        ? const Center(
+            child: SizedBox(
+              child: Text('No Cart Data'),
+            ),
+          )
+        : Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.h),
+            child: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: _cartItems.length, //productDetailsCartList.length,
+                separatorBuilder: ((context, index) {
+                  return SizedBox(
+                    height: 30.v,
+                  );
+                }),
+                itemBuilder: ((context, index) {
+                  return Dismissible(
+                    key: Key(index.toString()),
+                    background: slideLeftBackground(),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      _localCartContoller.removeCartItem(_cartItems[index]);
 
-                // const CustomDialog(
-                //     titleText: Constants.deleteConfirm,
-                //     buttonOneLabel: 'Back',
-                //     buttonTwoLabel: 'Yes');
-              },
-              child: CartProductItemWidget(
-                cartItem: _cartItems[index],
-                index: index,
-              ),
-            );
-          })),
-    );
+                      // const CustomDialog(
+                      //     titleText: Constants.deleteConfirm,
+                      //     buttonOneLabel: 'Back',
+                      //     buttonTwoLabel: 'Yes');
+                    },
+                    child: CartProductItemWidget(
+                      cartItem: _cartItems[index],
+                      index: index,
+                    ),
+                  );
+                })),
+          );
   }
 
   Widget slideLeftBackground() {

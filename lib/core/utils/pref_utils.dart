@@ -1,31 +1,42 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefUtils {
-  PrefUtils() {
-    SharedPreferences.getInstance().then((value) {
-      _sharePreferences = value;
-    });
+  static SharedPreferences? _sharedPreferences;
+
+  static final PrefUtils _instance = PrefUtils._internal();
+
+  factory PrefUtils() {
+    return _instance;
   }
 
-  static SharedPreferences? _sharePreferences;
+  PrefUtils._internal();
 
   Future<void> init() async {
-    _sharePreferences ??= await SharedPreferences.getInstance();
+    _sharedPreferences ??= await SharedPreferences.getInstance();
     print('SharePreferneces Initialized');
   }
 
   void clearSharePreferences() {
-    _sharePreferences!.clear();
+    if (_sharedPreferences != null) {
+      _sharedPreferences!.clear();
+    } else {
+      print('SharedPreferences not initialized');
+    }
   }
 
-  Future<void> setThemeData(String value) {
-    return _sharePreferences!.setString('themeData', value);
+  Future<void> setThemeData(String value) async {
+    if (_sharedPreferences != null) {
+      await _sharedPreferences!.setString('themeData', value);
+    } else {
+      print('SharedPreferences not initialized');
+    }
   }
 
   String getThemeData() {
-    try {
-      return _sharePreferences!.getString('themeData')!;
-    } catch (e) {
+    if (_sharedPreferences != null) {
+      return _sharedPreferences!.getString('themeData') ?? 'primary';
+    } else {
+      print('SharedPreferences not initialized');
       return 'primary';
     }
   }

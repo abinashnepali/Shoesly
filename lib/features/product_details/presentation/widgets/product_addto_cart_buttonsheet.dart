@@ -47,11 +47,12 @@ class _ProductBottomSheetState extends State<ProductBottomSheet> {
       return;
     }
 
-    Get.find<LocalCartController>().addcartToLocal(
+    final response = Get.find<LocalCartController>().addcartToLocal(
         productmodel: widget.productDetailsModel!,
         noOfquanity: int.parse(_buttonSheetCrl.quantitycontroller.text));
-
+    if (response.hasError) return;
     Get.back();
+
     if (Get.isBottomSheetOpen == null || !Get.isBottomSheetOpen!) {
       Get.bottomSheet(
         ProductCartBottomSheet(

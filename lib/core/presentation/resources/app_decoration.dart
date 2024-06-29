@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
 
@@ -9,6 +10,10 @@ class AppDecoration {
   static BoxDecoration get fillRedA => BoxDecoration(color: appTheme.redA200);
   static BoxDecoration get fillSecondaryContainer =>
       BoxDecoration(color: theme.colorScheme.secondaryContainer);
+
+  static BoxDecoration get blueGray10033 => BoxDecoration(
+        color: appTheme.blueGray10033,
+      );
 
 //outline decorations
   static BoxDecoration get OutlinedBlack =>

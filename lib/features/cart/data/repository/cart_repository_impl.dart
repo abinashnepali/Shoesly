@@ -5,6 +5,7 @@ import 'package:shoesly/core/data/firebase/firebase_services.dart';
 import 'package:shoesly/core/data/firebase/network_exception.dart';
 import 'package:shoesly/core/data/firebase/network_info.dart';
 import 'package:shoesly/core/utils/constants.dart';
+import 'package:shoesly/core/utils/constants_message.dart';
 import 'package:shoesly/features/cart/data/models/cart_model.dart';
 import 'package:shoesly/features/cart/data/repository/cart_repository.dart';
 import 'package:uid/uid.dart';
@@ -38,7 +39,7 @@ class CartRepositoryImpl implements CartRepository {
           batch.set(docRef, item.toJson());
         }
         await batch.commit();
-        return ApiResponse(data: 'Cart  added successfully');
+        return ApiResponse(data: ConstantsMessage.orderPlaced);
       } catch (e) {
         print(e.toString());
         if (e is FirebaseException) {

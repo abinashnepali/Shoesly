@@ -9,6 +9,7 @@ class ProductDetailsModel {
       required this.reviewCount,
       required this.price,
       required this.id,
+      this.brandName,
       this.description,
       this.color,
       this.gender,
@@ -17,6 +18,7 @@ class ProductDetailsModel {
   String? brandImage;
   String? productImage;
   String? productName;
+  String? brandName;
   double? rating;
   String? reviewCount;
   double? price;
@@ -34,6 +36,7 @@ class ProductDetailsModel {
 
     return ProductDetailsModel(
         brandImage: '${Constants.imgBrand}/${map['brandImage'] ?? ''}',
+        brandName: map['brandName'] ?? '',
         productImage: imagefilePath,
         productName: map['productName'] ?? '',
         rating: double.parse((map['rating'] ?? '1').toString()),
@@ -43,7 +46,7 @@ class ProductDetailsModel {
         description: map['description'] ?? '',
         color: map['color'] ?? '',
         gender: map['gender'] ?? '',
-        size: map['size'] ?? '');
+        size: (map['selectedSize'] ?? '').toString());
   }
 }
 

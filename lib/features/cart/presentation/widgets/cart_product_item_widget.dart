@@ -49,6 +49,7 @@ class CartProductItemWidget extends StatelessWidget {
               Text(
                 cartItem.productName!,
                 style: CustomTextStyles.titleSmallBlack90001,
+                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(
                 height: 10.v,
@@ -59,6 +60,7 @@ class CartProductItemWidget extends StatelessWidget {
                   Text(
                     cartItem.shoeColor!,
                     style: CustomTextStyles.bodySmallGray700,
+                    maxLines: 2,
                   ),
                   SizedBox(
                     width: 8.v,
@@ -70,7 +72,10 @@ class CartProductItemWidget extends StatelessWidget {
                   SizedBox(
                     width: 8.v,
                   ),
-                  Text(cartItem.size!.toString()),
+                  Text(
+                    cartItem.size!,
+                    style: CustomTextStyles.bodySmallGray700,
+                  ),
                 ],
               ),
               SizedBox(
