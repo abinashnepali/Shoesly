@@ -66,7 +66,7 @@ class BrandListItemWidget extends StatelessWidget {
                                 child: Icon(
                               Icons.check,
                               size: 12,
-                              color: theme.colorScheme.background,
+                              color: theme.colorScheme.surface,
                             )),
                           ),
                         ),

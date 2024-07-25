@@ -9,4 +9,11 @@ class HomeTabContainerController extends GetxController
 
   late TabController tabviewContainer =
       Get.put(TabController(vsync: this, length: 5));
+  int tabindex = 0;
+
+  void changeTabIndex(int index) {
+    debugPrint('The value of index is $index');
+    tabindex = index;
+    update();
+  }
 }

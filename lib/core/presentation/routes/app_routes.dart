@@ -10,6 +10,9 @@ abstract class Routes {
   static const addtoCart = _Paths.addtoCart;
   static const cartScreen = _Paths.cartScreen;
   static const orderSummary = _Paths.orderSummary;
+  static const loginScreen = _Paths.loginScreen;
+  static const profileScreen = _Paths.profileScreen;
+  static const editprofileScreen = _Paths.editProfile;
 }
 
 abstract class _Paths {
@@ -22,4 +25,9 @@ abstract class _Paths {
   static const addtoCart = '/addtoCart';
   static const cartScreen = '/cartScreen';
   static const orderSummary = '/orderSummary';
+
+  //login
+  static const loginScreen = "/loginScreen";
+  static const profileScreen = "/profileScreen";
+  static const editProfile = '/editProfile';
 }

@@ -1,28 +1,29 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shoesly/core/data/firebase/api_response.dart';
 import 'package:shoesly/core/presentation/widgets/toast.dart';
 import 'package:shoesly/core/utils/constants.dart';
 import 'package:shoesly/core/utils/constants_message.dart';
+import 'package:shoesly/core/utils/pref_utils.dart';
 import 'package:shoesly/features/cart/data/models/cart_model.dart';
 import 'package:shoesly/features/discover/data/models/product_details_model.dart';
 
 class LocalCartController extends GetxController {
   var cartItemList = <CartItemModel>[];
+  late PrefUtils perfs;
 
   @override
   void onInit() {
     super.onInit();
+    perfs = Get.find<PrefUtils>();
     _loadCartListDetailsFromSharePerf();
   }
 
 // This function add   product item on Cart
   ApiResponse addcartToLocal(
       {required ProductDetailsModel productmodel, required int noOfquanity}) {
-    if (noOfquanity > 0 && productmodel != null) {
+    if (noOfquanity > 0) {
       bool isProductexist =
           cartItemList.any((item) => item.productId == productmodel.id);
 
@@ -100,8 +101,6 @@ class LocalCartController extends GetxController {
   // Share perf
 
   Future<void> _loadCartListDetailsFromSharePerf() async {
-    final perfs = await SharedPreferences.getInstance();
-
     String? cartJson = perfs.getString(Constants.perfcartItemList);
 
     if (cartJson != null) {
@@ -113,7 +112,6 @@ class LocalCartController extends GetxController {
   }
 
   Future<void> _saveCartListDetailsToSharePerf() async {
-    final perfs = await SharedPreferences.getInstance();
     String cartJson =
         jsonEncode(cartItemList.map((item) => item.toJson()).toList());
     await perfs.setString(Constants.perfcartItemList, cartJson);
@@ -123,9 +121,8 @@ class LocalCartController extends GetxController {
 
   Future<void> removeCartFromLocal() async {
     cartItemList = [];
-    final perfs = await SharedPreferences.getInstance();
 
     update();
-    await perfs.remove(Constants.perfcartItemList);
+    await perfs.removePref(Constants.perfcartItemList);
   }
 }

@@ -6,7 +6,6 @@ import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/core/presentation/widgets/custom_icon_button.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
-import 'package:shoesly/features/productReview/data/models/review_model.dart';
 import 'package:shoesly/features/productReview/presentation/controller/review_controller.dart';
 import 'package:shoesly/features/productReview/presentation/controller/review_tab_controller.dart';
 import 'widgets/review_widget.dart';
@@ -38,10 +37,9 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
               GetBuilder<ReviewController>(
                   init: ReviewController(),
                   builder: (context) {
-                    // final reviewListinfo =
-                    //     Get.find<ReviewController>().reviewListinfo;
                     final reviewApiResponse =
                         Get.find<ReviewController>().reviewApireponse;
+                    final reviewInfoList = reviewApiResponse.data;
 
                     return reviewApiResponse.isInitial
                         ? const Center(
@@ -60,12 +58,12 @@ class ProductReviewScreen extends GetWidget<ReviewTabController> {
                                 child: TabBarView(
                                     controller: controller.tabviewContainer,
                                     children: [
-                                      ReviewWidget(reviewitems: reviewListinfo),
-                                      ReviewWidget(reviewitems: reviewListinfo),
-                                      ReviewWidget(reviewitems: reviewListinfo),
-                                      ReviewWidget(reviewitems: reviewListinfo),
-                                      ReviewWidget(reviewitems: reviewListinfo),
-                                      ReviewWidget(reviewitems: reviewListinfo)
+                                      ReviewWidget(reviewitems: reviewInfoList),
+                                      ReviewWidget(reviewitems: reviewInfoList),
+                                      ReviewWidget(reviewitems: reviewInfoList),
+                                      ReviewWidget(reviewitems: reviewInfoList),
+                                      ReviewWidget(reviewitems: reviewInfoList),
+                                      ReviewWidget(reviewitems: reviewInfoList)
                                     ]));
                   }),
             ],

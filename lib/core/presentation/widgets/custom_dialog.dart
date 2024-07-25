@@ -1,25 +1,30 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:shoesly/core/presentation/resources/app_decoration.dart';
 import 'package:shoesly/core/presentation/resources/custom_text_style.dart';
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/widgets/custom_outline_button.dart';
 
 class CustomDialog extends StatelessWidget {
-  const CustomDialog(
+  CustomDialog(
       {super.key,
       this.align,
       required this.titleText,
       this.titleTextStyle,
-      required this.buttonOneLabel,
-      required this.buttonTwoLabel,
+      required this.backbuttonlabel,
+      required this.confirmbuttonlabel,
+      required this.confirmbutton,
+      this.cancelbutton,
       this.contentText});
 
   final Alignment? align;
   final String? titleText;
   final TextStyle? titleTextStyle;
-  final String? buttonOneLabel;
-  final String? buttonTwoLabel;
+  final String? backbuttonlabel;
+  final String? confirmbuttonlabel;
   final String? contentText;
+  final Function? confirmbutton;
+  Function(String)? cancelbutton;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +58,16 @@ class CustomDialog extends StatelessWidget {
               : const SizedBox(),
           actions: [
             CustomOutlineButton(
-              text: buttonOneLabel!,
-              onPressed: () {},
+              text: backbuttonlabel!,
+              onPressed: () {
+                cancelbutton ?? Get.back();
+              },
             ),
             CustomOutlineButton(
-              text: buttonTwoLabel!,
-              onPressed: () {},
+              text: confirmbuttonlabel!,
+              onPressed: () {
+                confirmbutton;
+              },
             ),
           ],
         ),

@@ -70,10 +70,10 @@ class DiscoverScreen extends StatelessWidget {
     return GetBuilder<DiscoverController>(
         init: DiscoverController(),
         builder: (context) {
-          final _productResponse =
+          final productResponse =
               Get.find<DiscoverController>().productDetailsApiResponse;
-          final _productinfo = _productResponse.data;
-          return _productResponse.isLoading
+          final productinfo = productResponse.data;
+          return productResponse.isLoading
               ? const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,18 +85,18 @@ class DiscoverScreen extends StatelessWidget {
                     ),
                   ],
                 )
-              : _productResponse.hasData
+              : productResponse.hasData
                   ? GridView.builder(
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisExtent: 250.v,
+                          mainAxisExtent: 268.v,
                           crossAxisCount: 2,
-                          mainAxisSpacing: 15.h,
+                          mainAxisSpacing: 16.h,
                           crossAxisSpacing: 20.h),
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: _productinfo.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: productinfo.length,
                       itemBuilder: (context, index) {
-                        return ProductGridItemWidget(_productinfo[index]);
+                        return ProductGridItemWidget(productinfo[index]);
                       })
                   : const SizedBox(child: Text('No Product Data'));
         });

@@ -47,7 +47,7 @@ class ProductCartBottomSheet extends StatelessWidget {
                     child: CustomIconButton(
                       alignment: Alignment.center,
                       icon: Icons.check,
-                      color: Color(0xFF101010),
+                      color: const Color(0xFF101010),
                       iconSize: 42,
                       onPressed: () {},
                     )),
@@ -64,7 +64,7 @@ class ProductCartBottomSheet extends StatelessWidget {
           SizedBox(
             height: 11.v,
           ),
-          Text('${quanity} Item Total'),
+          Text('$quanity Item Total'),
           SizedBox(
             height: 23.v,
           ),

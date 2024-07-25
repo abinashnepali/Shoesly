@@ -24,6 +24,14 @@ class PrefUtils {
     }
   }
 
+  Future<void> removePref(String key) async {
+    if (_sharedPreferences != null) {
+      await _sharedPreferences!.remove(key);
+    } else {
+      print('SharedPreferences not initialized');
+    }
+  }
+
   Future<void> setThemeData(String value) async {
     if (_sharedPreferences != null) {
       await _sharedPreferences!.setString('themeData', value);
@@ -38,6 +46,27 @@ class PrefUtils {
     } else {
       print('SharedPreferences not initialized');
       return 'primary';
+    }
+  }
+
+  Future<void> setString(String key, String value) async {
+    if (_sharedPreferences != null) {
+      await _sharedPreferences!.setString(key, value);
+    } else {
+      print('SharedPreferences not initialized');
+    }
+  }
+
+  String? getString(String key) {
+    return _getString(key);
+  }
+
+  String? _getString(String key) {
+    if (_sharedPreferences != null) {
+      return _sharedPreferences!.getString(key);
+    } else {
+      print('SharedPreferences not initialized');
+      return null;
     }
   }
 }

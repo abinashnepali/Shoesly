@@ -6,7 +6,7 @@ import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     this.alignment,
     this.width,

@@ -28,11 +28,11 @@ class ReviewModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['message'] = this.message;
-    data['rating'] = this.rating;
-    data['time'] = this.time;
-    data['userID'] = this.userID;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['rating'] = rating;
+    data['time'] = time;
+    data['userID'] = userID;
     return data;
   }
 }

@@ -8,4 +8,13 @@ class FirebaseService {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   FirebaseService._();
+
+  static Stream<User?> get authStateUpdate => firebaseAuth.authStateChanges();
+
+  static bool isAuthenticated() {
+    final user = FirebaseService.firebaseAuth.currentUser;
+    return user != null;
+  }
+
+  static User? get userinfo => FirebaseService.firebaseAuth.currentUser;
 }

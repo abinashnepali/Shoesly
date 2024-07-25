@@ -1,84 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:shoesly/core/presentation/resources/theme_helpers.dart';
 import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/core/presentation/widgets/appbar/appbar_title.dart';
 import 'package:shoesly/core/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
+import 'package:shoesly/features/cart/presentation/cart_screen.dart';
 import 'package:shoesly/features/discover/presentation/discover_screen.dart';
 import 'package:shoesly/features/home_tab_container/presentation/controller/home_tab_controller.dart';
+import 'package:shoesly/features/setting/presentation/setting_screen.dart';
 
 class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
-  const HomeTabContainerScreen({super.key});
+  HomeTabContainerScreen({super.key});
+
+  final dashBoardCtr = Get.find<HomeTabContainerController>();
 
   @override
   Widget build(BuildContext context) {
+    final mediaQSize = MediaQuery.sizeOf(context);
     return SafeArea(
-        child: Scaffold(
-      appBar: _buildAppbarSection(),
-      body: SizedBox(
-        width: double.maxFinite,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            SizedBox(
-              height: 20.v,
+        child: GetBuilder<HomeTabContainerController>(builder: (controller) {
+      return Scaffold(
+        // appBar: _buildAppbarSection(),
+        bottomNavigationBar: _buildbottomNavigationBar(mediaQSize),
+        body: IndexedStack(
+          index: dashBoardCtr.tabindex,
+          children: [HomeScreen(), CartScreen(), SettingScreen()],
+        ),
+      );
+    }));
+  }
+
+  Widget _buildbottomNavigationBar(Size mediaQSize) {
+    return GetBuilder<HomeTabContainerController>(builder: (controller) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: NavigationBar(
+          height: mediaQSize.height * 0.080,
+          backgroundColor: appTheme.gray200,
+          selectedIndex: dashBoardCtr.tabindex,
+          onDestinationSelected: (i) {
+            dashBoardCtr.changeTabIndex(i);
+          },
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          destinations: const <NavigationDestination>[
+            NavigationDestination(
+              selectedIcon: Icon(
+                Icons.home,
+              ),
+              icon: Icon(
+                Icons.home_outlined,
+                size: 20,
+              ),
+              label: 'Home',
             ),
-            _buildTabview(),
-            Expanded(
-                child: SizedBox(
-              height: 967.v,
-              child: TabBarView(
-                  controller: controller.tabviewContainer,
-                  children: const [
-                    DiscoverScreen(),
-                    DiscoverScreen(),
-                    DiscoverScreen(),
-                    DiscoverScreen(),
-                    DiscoverScreen(),
-                  ]),
-            ))
+            NavigationDestination(
+              selectedIcon: Icon(Icons.shopping_cart_checkout_rounded),
+              icon: Icon(Icons.shopping_cart_checkout_rounded, size: 20),
+              label: 'Person',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.settings_accessibility_sharp),
+              icon: Icon(Icons.settings_accessibility_sharp, size: 20),
+              label: 'Setting',
+            ),
           ],
         ),
-      ),
-    ));
+      );
+    });
   }
+}
 
-  //section widget
-
-  Widget _buildTabview() {
-    return SizedBox(
-      height: 24.v,
-      width: 347.h,
-      child: TabBar(
-        controller: controller.tabviewContainer,
-        isScrollable: true,
-        labelColor: appTheme.black900,
-        unselectedLabelColor: appTheme.gray400,
-        labelStyle: theme.textTheme.titleLarge,
-        indicatorColor: Colors.transparent,
-        dividerColor: appTheme.white,
-        tabs: const [
-          Tab(
-            child: Text('All'),
-          ),
-          Tab(
-            child: Text('Nike'),
-          ),
-          Tab(
-            child: Text('Jordan'),
-          ),
-          Tab(
-            child: Text('Adidas'),
-          ),
-          Tab(
-            child: Text('Reebok'),
-          )
-        ],
-      ),
-    );
-  }
-
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+  final dashBoardCtr = Get.find<HomeTabContainerController>();
   // Appbar section
 
   PreferredSizeWidget _buildAppbarSection() {
@@ -122,6 +118,73 @@ class HomeTabContainerScreen extends GetWidget<HomeTabContainerController> {
           ),
         )
       ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: _buildAppbarSection(),
+      body: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(
+              height: 20.v,
+            ),
+            _buildTabview(),
+            Expanded(
+                child: SizedBox(
+              height: 967.v,
+              child: TabBarView(
+                  controller: dashBoardCtr.tabviewContainer,
+                  children: const [
+                    DiscoverScreen(),
+                    DiscoverScreen(),
+                    DiscoverScreen(),
+                    DiscoverScreen(),
+                    DiscoverScreen(),
+                  ]),
+            ))
+          ],
+        ),
+      ),
+    );
+  }
+
+  //section widget
+
+  Widget _buildTabview() {
+    return SizedBox(
+      height: 24.v,
+      width: 347.h,
+      child: TabBar(
+        controller: dashBoardCtr.tabviewContainer,
+        isScrollable: true,
+        labelColor: appTheme.black900,
+        unselectedLabelColor: appTheme.gray400,
+        labelStyle: theme.textTheme.titleLarge,
+        indicatorColor: Colors.transparent,
+        dividerColor: appTheme.white,
+        tabs: const [
+          Tab(
+            child: Text('All'),
+          ),
+          Tab(
+            child: Text('Nike'),
+          ),
+          Tab(
+            child: Text('Jordan'),
+          ),
+          Tab(
+            child: Text('Adidas'),
+          ),
+          Tab(
+            child: Text('Reebok'),
+          )
+        ],
+      ),
     );
   }
 }

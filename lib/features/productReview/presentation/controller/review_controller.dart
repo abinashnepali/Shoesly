@@ -8,6 +8,7 @@ import 'package:shoesly/features/productReview/data/repository/review_repository
 
 class ReviewController extends GetxController {
   late ReviewRepository reviewRepository;
+  @override
   void onInit() {
     super.onInit();
     reviewRepository = Get.find<ReviewRepository>();
@@ -26,7 +27,7 @@ class ReviewController extends GetxController {
     }
 
     CustomLoadingDialog.showProgressDialog();
-    List<ReviewModel> _reviewList = [];
+    List<ReviewModel> reviewList = [];
 
     final reviewResponse = await reviewRepository.getAllReview();
     if (reviewResponse.hasError) {

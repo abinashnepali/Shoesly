@@ -22,7 +22,7 @@ import 'package:shoesly/features/product_details/presentation/widgets/sizeselect
 class ProductDetailsScreen extends StatelessWidget {
   final ProductDetailsModel? productDetailsModel;
 
-  ProductDetailsScreen({super.key, required this.productDetailsModel});
+  const ProductDetailsScreen({super.key, required this.productDetailsModel});
 
   void _showAddToCartBottomSheet(BuildContext context) {
     if (Get.isBottomSheetOpen == null || !Get.isBottomSheetOpen!) {
@@ -78,7 +78,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         children: [
                           CustomRatingBar(
                             initialRating: productDetailsModel!.rating!,
-                            color: Color(0xFFFCD240),
+                            color: const Color(0xFFFCD240),
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 5.h),

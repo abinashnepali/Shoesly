@@ -23,7 +23,7 @@ extension ImageTypeExtension on String {
 
 class CustomImageView extends StatelessWidget {
   CustomImageView(
-      {this.imagePath,
+      {super.key, this.imagePath,
       this.height,
       this.width,
       this.color,

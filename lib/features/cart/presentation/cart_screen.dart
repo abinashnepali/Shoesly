@@ -75,8 +75,8 @@ class CartScreen extends StatelessWidget {
   }
 
   Widget _buildProductList() {
-    final _cartItems = _localCartContoller.cartItemList;
-    return _cartItems.isEmpty
+    final cartItems = _localCartContoller.cartItemList;
+    return cartItems.isEmpty
         ? const Center(
             child: SizedBox(
               child: Text('No Cart Data'),
@@ -87,7 +87,7 @@ class CartScreen extends StatelessWidget {
             child: ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: _cartItems.length, //productDetailsCartList.length,
+                itemCount: cartItems.length, //productDetailsCartList.length,
                 separatorBuilder: ((context, index) {
                   return SizedBox(
                     height: 30.v,
@@ -99,15 +99,10 @@ class CartScreen extends StatelessWidget {
                     background: slideLeftBackground(),
                     direction: DismissDirection.endToStart,
                     onDismissed: (direction) {
-                      _localCartContoller.removeCartItem(_cartItems[index]);
-
-                      // const CustomDialog(
-                      //     titleText: Constants.deleteConfirm,
-                      //     buttonOneLabel: 'Back',
-                      //     buttonTwoLabel: 'Yes');
+                      _localCartContoller.removeCartItem(cartItems[index]);
                     },
                     child: CartProductItemWidget(
-                      cartItem: _cartItems[index],
+                      cartItem: cartItems[index],
                       index: index,
                     ),
                   );

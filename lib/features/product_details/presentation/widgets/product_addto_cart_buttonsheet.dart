@@ -16,7 +16,7 @@ import 'package:shoesly/features/product_details/presentation/widgets/product_ca
 class ProductBottomSheet extends StatefulWidget {
   final ProductDetailsModel? productDetailsModel;
 
-  ProductBottomSheet({super.key, required this.productDetailsModel});
+  const ProductBottomSheet({super.key, required this.productDetailsModel});
 
   @override
   State<ProductBottomSheet> createState() => _ProductBottomSheetState();

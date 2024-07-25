@@ -8,7 +8,7 @@ import 'package:shoesly/features/productReview/data/models/review_model.dart';
 
 class ReviewWidget extends StatelessWidget {
   final List<ReviewModel> reviewitems;
-  ReviewWidget({super.key, required this.reviewitems});
+  const ReviewWidget({super.key, required this.reviewitems});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class ReviewWidget extends StatelessWidget {
                                 ),
                                 CustomRatingBar(
                                   initialRating: item.rating,
-                                  color: Color(0xFFFCD240),
+                                  color: const Color(0xFFFCD240),
                                 ),
                                 Container(
                                   width: 247.h,

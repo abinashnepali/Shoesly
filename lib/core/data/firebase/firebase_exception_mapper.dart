@@ -56,6 +56,22 @@ class FirebaseExceptionMapper {
       case 'auth/wrong-password':
         return FirebaseServiceException(
             message: "Wrong Password", code: e.code);
+
+      case 'invalid-email':
+        return FirebaseServiceException(
+            message: 'The email address is not valid.', code: e.code);
+
+      case 'user-disabled':
+        return FirebaseServiceException(
+            message: 'The user account has been disabled.', code: e.code);
+
+      case 'user-not-found':
+        return FirebaseServiceException(
+            message: 'No user found with this email.', code: e.code);
+
+      case 'wrong-password':
+        return FirebaseServiceException(
+            message: 'Wrong password provided.', code: e.code);
       default:
         return FirebaseServiceException(
             message: "Unexpected Error", code: e.code);

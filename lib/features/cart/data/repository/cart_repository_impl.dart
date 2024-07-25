@@ -44,7 +44,7 @@ class CartRepositoryImpl implements CartRepository {
         print(e.toString());
         if (e is FirebaseException) {
           final exception = FirebaseExceptionMapper.mapFirebaseException(e);
-          return ApiResponse(error: exception);
+          return ApiResponse(error: exception.code);
         }
 
         return ApiResponse(error: e.toString());
@@ -75,7 +75,7 @@ class CartRepositoryImpl implements CartRepository {
       catch (e) {
         if (e is FirebaseException) {
           final exception = FirebaseExceptionMapper.mapFirebaseException(e);
-          return ApiResponse(error: exception);
+          return ApiResponse(error: exception.code);
         }
 
         return ApiResponse(

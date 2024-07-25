@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'package:shoesly/core/data/firebase/api_response.dart';
+import 'package:shoesly/core/data/firebase/firebase_services.dart';
 import 'package:shoesly/core/presentation/routes/app_routes.dart';
 import 'package:shoesly/core/presentation/widgets/loading_dialog.dart';
 import 'package:shoesly/core/presentation/widgets/toast.dart';
@@ -12,6 +13,7 @@ class CartItemController extends GetxController {
 
   late LocalCartController _localCartController;
 
+  @override
   void onInit() {
     super.onInit();
     _localCartController = Get.find<LocalCartController>();
@@ -32,9 +34,9 @@ class CartItemController extends GetxController {
   Future<void> getCartDetails() async {
     String userName = '';
     CustomLoadingDialog.showProgressDialog();
-    final _cartDetailsReponse = await cartRepository.getCartDetails(userName);
+    final cartDetailsReponse = await cartRepository.getCartDetails(userName);
     CustomLoadingDialog.hideProgressDialog();
-    cartApiResponse = _cartDetailsReponse;
+    cartApiResponse = cartDetailsReponse;
   }
 
   // End of  GetCart
@@ -43,16 +45,21 @@ class CartItemController extends GetxController {
 
   Future<void> addToCartOnFirebase() async {
     final cartInfo = _localCartController.localCartDetails;
-    final _cartReponse = await cartRepository.addToCart(cartInfo);
+    final isAuthenticated = FirebaseService.isAuthenticated();
+    if (!isAuthenticated) {
+      Get.toNamed(Routes.loginScreen);
+      return;
+    }
+    final cartReponse = await cartRepository.addToCart(cartInfo);
     cartApiResponse.isLoading = false;
-    if (_cartReponse.hasError) {
-      showFailureToast(_cartReponse.error.toString());
-    } else if (_cartReponse.hasData) {
-      showToast(_cartReponse.data);
+    if (cartReponse.hasError) {
+      showFailureToast(cartReponse.error.toString());
+    } else if (cartReponse.hasData) {
+      showToast(cartReponse.data);
       Get.toNamed(Routes.orderSummary);
       _localCartController.removeCartFromLocal();
     }
-    productDetailsResponse = _cartReponse;
+    productDetailsResponse = cartReponse;
   }
 
   // End of Cart

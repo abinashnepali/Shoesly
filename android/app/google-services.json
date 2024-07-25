@@ -12,7 +12,12 @@
           "package_name": "com.example.shoesly"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "898998440746-2l0kbdgbfijv6p09q82psh58qa336fk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC4xekBsYLa-zf6dhMhtwF86UY6bAlhPus"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898998440746-2l0kbdgbfijv6p09q82psh58qa336fk6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "898998440746-aef0a5q6hfmd5utno8lf1j6k5ng32478.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoesly"
+              }
+            }
+          ]
         }
       }
     }

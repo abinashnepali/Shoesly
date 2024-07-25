@@ -8,6 +8,7 @@ import 'package:shoesly/features/discover/data/repository/discovery_repository.d
 class DiscoverController extends GetxController {
   late DiscoveryRepository discoveryRepository;
 
+  @override
   void onInit() {
     super.onInit();
     discoveryRepository = Get.find<DiscoveryRepository>();

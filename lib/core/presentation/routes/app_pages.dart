@@ -14,12 +14,16 @@ import 'package:shoesly/features/productReview/di/review_binding.dart';
 import 'package:shoesly/features/product_details/di/product_details_bindings.dart';
 import 'package:shoesly/features/product_details/presentation/product_details_screen.dart';
 import 'package:shoesly/features/productReview/presentation/product_review_screen.dart';
+import 'package:shoesly/features/user/data/di/bindings/auth_bindings.dart';
+import 'package:shoesly/features/user/presentation/login_screen.dart';
+import 'package:shoesly/features/user/presentation/profile_screen.dart';
+import 'package:shoesly/features/user/presentation/wigets/edit_profile_screen.dart';
 
 class AppPages {
   AppPages._();
 
   static const initial = Routes.homeTabContainer;
-  //static const initial = Routes.orderSummary;
+  // static const initial = Routes.profileScreen;
 
   static final routes = [
     GetPage(
@@ -27,10 +31,11 @@ class AppPages {
         page: HomeTabContainerScreen.new,
         bindings: [
           CoreBindings(),
+          AuthBindings(),
           HomeTabContainerBinding(),
           ProductDetailBindings(),
           DiscoverBinding(),
-          CartControllerBindings()
+          CartControllerBindings(),
         ]),
     GetPage(name: Routes.discover, page: DiscoverScreen.new),
     GetPage(name: Routes.orderSummary, page: OrderSummary.new),
@@ -65,5 +70,17 @@ class AppPages {
       name: Routes.productFilter,
       page: FilterScreen.new,
     ),
+    GetPage(
+        name: Routes.loginScreen,
+        page: LoginScreen.new,
+        bindings: [AuthBindings()]),
+    GetPage(
+        name: Routes.profileScreen,
+        page: ProfileScreen.new,
+        bindings: [AuthBindings()]),
+    GetPage(
+        name: Routes.editprofileScreen,
+        page: EditProfile.new,
+        bindings: [AuthBindings()]),
   ];
 }

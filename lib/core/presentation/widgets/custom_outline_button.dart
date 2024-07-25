@@ -4,8 +4,8 @@ import 'package:shoesly/core/presentation/widgets/base_button.dart';
 import 'package:shoesly/core/utils/size_utils.dart';
 
 class CustomOutlineButton extends BaseButton {
-  CustomOutlineButton(
-      {Key? key,
+  const CustomOutlineButton(
+      {super.key,
       this.decoration,
       this.leftIcon,
       this.rightIcon,
@@ -46,8 +46,8 @@ class CustomOutlineButton extends BaseButton {
   }
 
   Widget get buildOutlineButtonWidget => Container(
-        height: this.height ?? 50.v,
-        width: this.width ?? double.maxFinite,
+        height: height ?? 50.v,
+        width: width ?? double.maxFinite,
         margin: marign,
         decoration: decoration,
         child: OutlinedButton(

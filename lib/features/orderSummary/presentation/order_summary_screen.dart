@@ -268,7 +268,7 @@ class OrderSummary extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '$title',
+          title,
           style: theme.textTheme.titleMedium!.copyWith(color: appTheme.gray600),
         ),
         Text('\$$price',

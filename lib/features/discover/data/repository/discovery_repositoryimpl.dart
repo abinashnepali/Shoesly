@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:shoesly/core/data/firebase/api_response.dart';
 import 'package:shoesly/core/data/firebase/firebase_exception_mapper.dart';
 import 'package:shoesly/core/data/firebase/firebase_services.dart';
@@ -33,7 +32,7 @@ class DiscoveryRepositoryimpl implements DiscoveryRepository {
       catch (e) {
         if (e is FirebaseException) {
           final exception = FirebaseExceptionMapper.mapFirebaseException(e);
-          return ApiResponse(error: exception.message);
+          return ApiResponse(error: exception.code);
         }
 
         return ApiResponse(error: e.toString());

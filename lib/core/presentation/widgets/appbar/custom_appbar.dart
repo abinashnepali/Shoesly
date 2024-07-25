@@ -44,6 +44,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  @override
   Size get preferredSize => Size(SizeUtils.width, height ?? 55.v);
 
   _getStyle() {

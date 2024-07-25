@@ -16,8 +16,8 @@ class ThemeHelper {
   final Map<String, ColorScheme> _supportColorScheme = {
     'lightcode': ColorSchemes.lighCodeColorSchema
   };
-  void changeTheme(String _newTheme) {
-    PrefUtils().setThemeData(_newTheme);
+  void changeTheme(String newTheme) {
+    PrefUtils().setThemeData(newTheme);
     Get.forceAppUpdate();
   }
 
@@ -63,8 +63,8 @@ class ThemeHelper {
           ),
         ),
         radioTheme: RadioThemeData(
-          fillColor: MaterialStateColor.resolveWith((states) {
-            if (states.contains(MaterialState.selected)) {
+          fillColor: WidgetStateColor.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
               return appTheme.black900;
             }
             return Colors.transparent;

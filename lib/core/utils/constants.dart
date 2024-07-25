@@ -9,10 +9,12 @@ class Constants {
   static const productImage = "$imagePath/product";
   static const imgUser = "$imagePath/user";
   static const imgBrand = "$imagePath/brand";
-  static const noImage = "$imagePath/noimage.jpg";
+  static const noImage = "assets/noimage.png";
+  static String porfileImageUrl = 'assets/no-profile.png';
 
   //text
   static const deleteConfirm = "Are You Sure You Want to Delete?";
+  static const logoutConfirm = "Are You Sure You Want to Logout?";
 
 //firebase collectin name
   static const brandList = "brands";
@@ -25,4 +27,12 @@ class Constants {
 
 //sharePerf
   static const perfcartItemList = 'perfcartItemList';
+
+//Auth
+  static String acessToken = 'acessToken';
+  static String loginsucess = 'Login Sucessful';
+  static String signUpSucess = 'User has SignUp Scessfully.';
+  static String signUpUnSucess =
+      'User cannot be  SignUp Please Try Again Later.';
+//
 }
